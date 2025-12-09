@@ -683,3 +683,169 @@ main {
     grid-template-columns: 1fr;
   }
 }
+/* === Subcontractors page – layout ====================================== */
+.sub-page-intro {
+  max-width: 42rem;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+/* Light cards for documents so the captures look like real paper */
+.document-card {
+  background: #ffffff;
+  color: #000000;
+  border-radius: 1rem;
+  padding: 1.25rem 1.25rem 1.5rem;
+  border: 1px solid #d4d4d8;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85);
+  margin-top: 1.75rem;
+}
+
+/* === W-9 overlay ======================================================= */
+.w9-wrapper {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid #d4d4d8;
+  background: #ffffff;
+}
+
+.w9-bg {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* Generic overlay field styled to look like handwriting/typed text */
+.w9-input {
+  position: absolute;
+  font-size: 11px;
+  padding: 1px 2px;
+  border: none;
+  border-bottom: 1px solid #000000;
+  background: transparent;
+  color: #000000;
+  font-family: "Helvetica", Arial, sans-serif;
+}
+
+/* Specific W-9 field placements (percent-based, you can tweak later) */
+.w9-name {
+  top: 14%;
+  left: 19%;
+  width: 60%;
+}
+
+.w9-business {
+  top: 18.5%;
+  left: 27%;
+  width: 52%;
+}
+
+.w9-tax-class {
+  top: 23%;
+  left: 32%;
+  width: 48%;
+}
+
+.w9-address {
+  top: 32.3%;
+  left: 25%;
+  width: 58%;
+}
+
+.w9-city {
+  top: 36.7%;
+  left: 29%;
+  width: 55%;
+}
+
+.w9-account {
+  top: 41.3%;
+  left: 35%;
+  width: 48%;
+}
+
+/* SSN segments */
+.w9-ssn-1 {
+  top: 51.2%;
+  left: 69%;
+  width: 8%;
+}
+
+.w9-ssn-2 {
+  top: 51.2%;
+  left: 78%;
+  width: 6%;
+}
+
+.w9-ssn-3 {
+  top: 51.2%;
+  left: 85.5%;
+  width: 7%;
+}
+
+/* EIN */
+.w9-ein {
+  top: 57.5%;
+  left: 69%;
+  width: 24%;
+}
+
+/* Signature + date */
+.w9-signature {
+  top: 64.3%;
+  left: 24%;
+  width: 42%;
+}
+
+.w9-date {
+  top: 64.3%;
+  left: 76%;
+  width: 14%;
+}
+
+/* Agreement card text inputs inside white card */
+.agreement-card label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.agreement-card input,
+.agreement-card textarea {
+  width: 100%;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.45rem;
+  border: 1px solid #d4d4d8;
+  font-size: 0.85rem;
+}
+
+.agreement-card textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Status message under submit button */
+#sub-status {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+#sub-status.error {
+  color: #f97373;
+}
+
+#sub-status.success {
+  color: #22c55e;
+}
+
+/* On small screens, users can pinch/zoom the W-9 */
+@media (max-width: 640px) {
+  .w9-wrapper {
+    max-width: 100%;
+  }
+}
