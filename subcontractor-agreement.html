@@ -1,1 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subcontractor Agreement | Anchors Homes LLC</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Anchors Homes LLC logo" class="brand-logo" />
+        <span class="brand-text">
+          <span class="brand-name">Anchors Homes LLC</span>
+          <span class="brand-tagline">Custom Homes &amp; Remodeling</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="subcontractors.html">Subcontractors</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Subcontractor Agreement</h1>
+        <p>
+          Please review and sign the Anchors Homes LLC subcontractor agreement
+          below. When you submit, we’ll capture an image of the signed agreement
+          and send it to our office via Formspree.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <form
+          id="agreement-form"
+          action="https://formspree.io/f/xdkqdpgd"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="form-card">
+            <h2 style="margin-top:0;margin-bottom:0.75rem;">Subcontractor information</h2>
+            <div class="form-grid">
+              <div>
+                <label class="form-label" for="sub-name">Company / Individual Name</label>
+                <input
+                  id="sub-name"
+                  name="subcontractor_name"
+                  class="form-input"
+                  required
+                />
+              </div>
+              <div>
+                <label class="form-label" for="sub-trade">Primary Trade</label>
+                <input
+                  id="sub-trade"
+                  name="primary_trade"
+                  class="form-input"
+                  placeholder="Framing, electrical, plumbing, etc."
+                  required
+                />
+              </div>
+              <div>
+                <label class="form-label" for="sub-contact">Contact Person</label>
+                <input
+                  id="sub-contact"
+                  name="contact_person"
+                  class="form-input"
+                  required
+                />
+              </div>
+              <div>
+                <label class="form-label" for="sub-phone">Phone</label>
+                <input
+                  id="sub-phone"
+                  name="phone"
+                  type="tel"
+                  class="form-input"
+                />
+              </div>
+              <div>
+                <label class="form-label" for="sub-email">Email</label>
+                <input
+                  id="sub-email"
+                  name="email"
+                  type="email"
+                  class="form-input"
+                  required
+                />
+              </div>
+              <div>
+                <label class="form-label" for="sub-location">Typical Work Area</label>
+                <input
+                  id="sub-location"
+                  name="work_area"
+                  class="form-input"
+                  placeholder="Cities / counties you serve"
+                />
+              </div>
+              <div class="form-row-full">
+                <label class="form-label" for="sub-notes">
+                  Notes (crew size, scheduling, specialties)
+                </label>
+                <textarea
+                  id="sub-notes"
+                  name="notes"
+                  class="form-textarea"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agreement text card to capture -->
+          <div id="agreement-capture" class="document-card agreement-card">
+            <h2 style="margin-top:0;">Anchors Homes LLC Subcontractor Agreement</h2>
+
+            <p style="font-size:0.9rem;line-height:1.5;">
+              This Subcontractor Agreement (“Agreement”) is a blanket contract between
+              <strong>Anchors Homes LLC</strong> (“Builder”) and the undersigned
+              subcontractor (“Subcontractor”). By signing below, Subcontractor agrees to
+              the terms of this Agreement for all work performed for Builder unless
+              otherwise modified in writing.
+            </p>
+
+            <h3>1. Scope of Work &amp; Performance</h3>
+            <p style="font-size:0.85rem;line-height:1.6;">
+              Subcontractor agrees to furnish all labor, materials, equipment, and
+              supervision necessary to complete assigned work in a good and workmanlike
+              manner, in accordance with project plans, specifications, and all
+              applicable laws, codes, and regulations.
+            </p>
+
+            <h3>2. Independent Contractor</h3>
+            <p style="font-size:0.85rem;line-height:1.6;">
+              Subcontractor is an independent contractor and is not an employee of
+              Builder. Subcontractor is responsible for all taxes, withholdings, and
+              benefits for its workers. Subcontractor has no authority to bind Builder or
+              act as its agent.
+            </p>
+
+            <h3>3. Insurance &amp; Licensing</h3>
+            <p style="font-size:0.85rem;line-height:1.6;">
+              Subcontractor shall maintain all licenses required for its trade and shall
+              maintain workers’ compensation (if applicable), general liability, and
+              automobile liability coverage in limits acceptable to Builder. Certificates
+              of insurance naming Builder as a certificate holder will be provided upon
+              request.
+            </p>
+
+            <h3>4. Safety &amp; Compliance</h3>
+            <p style="font-size:0.85rem;line-height:1.6;">
+              Subcontractor shall follow all OSHA, state, and local safety standards and
+              jobsite rules. Subcontractor is responsible for the safety and conduct of
+              its employees and lower-tier subcontractors and shall promptly correct any
+              unsafe conditions attributable to its work.
+            </p>
+
+            <h3>5. Payment</h3>
+            <p style="font-size:0.85rem;line-height:1.6;">
+              Payment terms will be established per project and are subject to
+              satisfactory completion of work, inspection approval, and receipt of any
+              required lien waivers or documentation. Builder may withhold payment for
+              defective or incomplete work until such items are resolved.
+            </p>
+
+            <h3>6. Indemnification</h3>
+            <p style="font-size:0.85rem;line-height:1.6;">
+              To the fullest extent permitted by law, Subcontractor agrees to defend,
+              indemnify, and hold harmless Builder from and against claims, damages, and
+              expenses (including reasonable attorney fees) arising out of Subcontractor’s
+              work, except to the extent caused solely by the negligence of Builder.
+            </p>
+
+            <h3>7. Materials &amp; Cleanup</h3>
+            <p style="font-size:0.85rem;line-height:1.6;">
+              Subcontractor shall protect all materials provided by Builder or
+              Subcontractor from damage, store them neatly, and remove debris and waste
+              generated by its work. Builder may back-charge Subcontractor for material
+              losses or cleanup resulting from Subcontractor’s failure to comply.
+            </p>
+
+            <h3>8. Conduct</h3>
+            <p style="font-size:0.85rem;line-height:1.6;">
+              Subcontractor and its workers shall act professionally on all jobsites.
+              Possession or use of drugs or alcohol on the job, disorderly conduct, or
+              harassment is grounds for immediate removal from the project.
+            </p>
+
+            <h3>9. Term &amp; Termination</h3>
+            <p style="font-size:0.85rem;line-height:1.6;">
+              This Agreement remains in effect until terminated by either party upon
+              written notice, provided all obligations on active projects are fulfilled.
+              Builder may suspend or terminate Subcontractor’s work immediately for
+              material breach, unsafe practices, or loss of required insurance or
+              licensing.
+            </p>
+
+            <h3>10. Governing Law</h3>
+            <p style="font-size:0.85rem;line-height:1.6;">
+              This Agreement is governed by the laws of the State of Tennessee.
+            </p>
+
+            <!-- Signature area -->
+            <div style="margin-top:1.5rem;">
+              <div class="signature-label" style="margin-bottom:0.25rem;font-size:0.8rem;">
+                Subcontractor Signature (sign in the box below)
+              </div>
+              <div class="signature-pad-wrapper">
+                <canvas
+                  id="agreement-signature-pad"
+                  class="signature-pad"
+                ></canvas>
+              </div>
+            </div>
+
+            <div class="signature-blocks" style="margin-top:1rem;">
+              <div class="signature-box">
+                <div class="signature-label">Subcontractor Name (printed)</div>
+                <input
+                  type="text"
+                  name="agreement_sub_name"
+                  class="form-input"
+                  style="margin-top:0.25rem;"
+                  placeholder="Name"
+                  required
+                />
+              </div>
+              <div class="signature-box">
+                <div class="signature-label">Date</div>
+                <input
+                  type="text"
+                  name="agreement_date"
+                  class="form-input"
+                  style="margin-top:0.25rem;"
+                  placeholder="MM/DD/YYYY"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.4rem;">
+            <div style="text-align:right;">
+              <button
+                type="button"
+                class="btn secondary"
+                id="btn-clear-agreement-signature"
+              >
+                Clear signature
+              </button>
+            </div>
+            <button type="submit" class="btn primary">
+              Submit Subcontractor Agreement
+            </button>
+            <div id="agreement-status" style="font-size:0.84rem;"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <span>&copy; <span id="year"></span> Anchors Homes LLC.</span>
+      <span>Thank you for partnering with us.</span>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <!-- SignaturePad + html2canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const AGREEMENT_KEY = "sub_agreement_completed";
+    const form = document.getElementById("agreement-form");
+    const statusEl = document.getElementById("agreement-status");
+
+    const sigCanvas = document.getElementById("agreement-signature-pad");
+
+    function initSignatureCanvas(canvas) {
+      if (!canvas) return;
+      const parent = canvas.parentElement;
+      const width = parent.clientWidth || 320;
+      const height = parent.clientHeight || 100;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    initSignatureCanvas(sigCanvas);
+
+    const agreementPad = new SignaturePad(sigCanvas, {
+      penColor: "#000000",
+      backgroundColor: "rgba(0,0,0,0)"
+    });
+
+    document
+      .getElementById("btn-clear-agreement-signature")
+      .addEventListener("click", () => agreementPad.clear());
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.className = "";
+      statusEl.textContent = "Preparing agreement… please wait.";
+
+      if (agreementPad.isEmpty()) {
+        statusEl.className = "error";
+        statusEl.textContent = "Please sign the agreement before submitting.";
+        return;
+      }
+
+      const agreementEl = document.getElementById("agreement-capture");
+      const originalWidth = agreementEl.style.width;
+      const originalHeight = agreementEl.style.height;
+
+      try {
+        // Make the capture area roughly letter-size for readability
+        agreementEl.style.width = "8.5in";
+        agreementEl.style.minHeight = "11in";
+
+        const canvas = await html2canvas(agreementEl, { scale: 2 });
+        const agreementBlob = await new Promise((resolve) =>
+          canvas.toBlob(resolve, "image/png")
+        );
+        const sigBlob = await new Promise((resolve) =>
+          sigCanvas.toBlob(resolve, "image/png")
+        );
+
+        const formData = new FormData(form);
+        if (agreementBlob) {
+          formData.append(
+            "agreement_file",
+            agreementBlob,
+            "subcontractor-agreement.png"
+          );
+        }
+        if (sigBlob) {
+          formData.append(
+            "agreement_signature_file",
+            sigBlob,
+            "agreement-signature.png"
+          );
+        }
+
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" }
+        });
+
+        if (response.ok) {
+          // Mark as complete & return to landing page
+          localStorage.setItem(AGREEMENT_KEY, "true");
+          window.location.href = "subcontractors.html?agreement=done";
+        } else {
+          statusEl.className = "error";
+          statusEl.textContent =
+            "There was a problem submitting the agreement. Please try again.";
+        }
+      } catch (err) {
+        console.error(err);
+        statusEl.className = "error";
+        statusEl.textContent =
+          "Unexpected error preparing the agreement. Please refresh and try again.";
+      } finally {
+        agreementEl.style.width = originalWidth;
+        agreementEl.style.height = originalHeight;
+      }
+    });
+  </script>
+</body>
+</html>
 
