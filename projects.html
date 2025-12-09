@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Anchors Homes LLC</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Anchors Homes LLC logo" class="brand-logo" />
+        <span class="brand-text">
+          <span class="brand-name">Anchors Homes LLC</span>
+          <span class="brand-tagline">Custom Homes &amp; Remodeling</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="subcontractors.html">Subcontractors</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Current &amp; Recent Projects</h1>
+        <p>
+          Explore some of the locations where Anchors Homes LLC is actively
+          building and renovating. Tap on a pin to see a snapshot of the project.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container projects-layout">
+        <div id="projects-map"></div>
+
+        <aside class="project-legend">
+          <h2>Project Highlights</h2>
+          <ul id="project-list">
+            <!-- Project list is populated via JavaScript -->
+          </ul>
+          <p style="margin-top: 0.75rem; color: var(--color-text-muted); font-size: 0.85rem;">
+            <strong>Tip:</strong> Click or tap a map pin to view a photo and quick
+            details. Swap out the project data and images in the JavaScript to
+            match your active jobs.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <span>&copy; <span id="year"></span> Anchors Homes LLC.</span>
+      <span>Projects shown for illustration. Ask about our latest builds.</span>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Example projects — update coordinates, names, and image paths as needed.
+    const projects = [
+      {
+        name: "Lakeview Custom Home",
+        location: "Example Town, PA",
+        lat: 40.2732,
+        lng: -76.8867,
+        image: "images/project1-lakeview.jpg",
+        scope: "Ground-up custom build"
+      },
+      {
+        name: "Farmhouse Renovation",
+        location: "Example Borough, PA",
+        lat: 40.1393,
+        lng: -76.3077,
+        image: "images/project2-farmhouse.jpg",
+        scope: "Whole-home renovation"
+      },
+      {
+        name: "Modern Kitchen & Main Floor",
+        location: "Example City, PA",
+        lat: 40.0379,
+        lng: -76.3055,
+        image: "images/project3-kitchen.jpg",
+        scope: "Kitchen + main living refresh"
+      }
+    ];
+
+    const map = L.map("projects-map");
+
+    // Center map roughly around central PA; adjust as needed
+    const defaultCenter = [40.25, -76.8];
+    map.setView(defaultCenter, 8);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    const bounds = [];
+
+    projects.forEach((project) => {
+      const { lat, lng } = project;
+      const popupContent = `
+        <div class="project-popup">
+          <h3>${project.name}</h3>
+          <p>${project.location}</p>
+          <p style="margin-bottom: 0.5rem;">${project.scope}</p>
+          <img src="${project.image}" alt="${project.name}" />
+        </div>
+      `;
+
+      L.marker([lat, lng]).addTo(map).bindPopup(popupContent);
+      bounds.push([lat, lng]);
+    });
+
+    if (bounds.length > 0) {
+      map.fitBounds(bounds, { padding: [30, 30] });
+    }
+
+    // Populate side list
+    const listEl = document.getElementById("project-list");
+    projects.forEach((project, index) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <span class="project-name">${project.name}</span><br />
+        <span>${project.location}</span><br />
+        <span style="font-size: 0.85rem; color: var(--color-text-muted);">${project.scope}</span>
+      `;
+      li.style.cursor = "pointer";
+      li.addEventListener("click", () => {
+        map.setView([project.lat, project.lng], 13);
+      });
+      listEl.appendChild(li);
+    });
+  </script>
+</body>
+</html>
