@@ -684,13 +684,14 @@ main {
   }
 }
 /* === Subcontractors page – layout ====================================== */
+/* Subcontractors page intro text */
 .sub-page-intro {
   max-width: 42rem;
   font-size: 0.95rem;
   color: var(--color-text-muted);
 }
 
-/* Light cards for documents so the captures look like real paper */
+/* Light cards for documents so captures look like paper */
 .document-card {
   background: #ffffff;
   color: #000000;
@@ -700,6 +701,7 @@ main {
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85);
   margin-top: 1.75rem;
 }
+
 
 /* === W-9 overlay ======================================================= */
 .w9-wrapper {
