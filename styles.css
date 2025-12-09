@@ -270,6 +270,48 @@ main {
   height: 100%;
   object-fit: cover;
 }
+/* Hero (Home) – logo landing tweaks */
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Center hero content on smaller screens */
+@media (max-width: 900px) {
+  .hero-left {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Hex-style logo card to echo your mark */
+.hero-logo-card {
+  width: 220px;
+  max-width: 65vw;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 30% 10%, #ffffff 4%, #18181b 55%, #000000 100%);
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.9);
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%);
+}
+
+.hero-logo-card img.hero-logo-large {
+  width: 70%;
+  height: auto;
+  display: block;
+}
 
 /* === Generic Sections ==================================================== */
 .section {
