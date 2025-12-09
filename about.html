@@ -5,6 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Anchor Homes LLC</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .about-wrapper {
+      margin: 0 auto 2.5rem;
+      max-width: 960px;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 768px) {
+      .about-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .about-intro h1 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-intro p {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .about-owner-card {
+      border-radius: 0.75rem;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: #f9fafb;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .about-owner-photo {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 999px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 1rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+    }
+
+    .about-owner-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .about-owner-title {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-owner-text {
+      font-size: 0.9rem;
+      color: #111827;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .about-values {
+      margin-top: 2rem;
+    }
+
+    .about-values h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .about-values-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .about-value-card {
+      border-radius: 0.75rem;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      background: #ffffff;
+      padding: 0.9rem 1rem;
+    }
+
+    .about-value-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .about-value-card p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -16,14 +116,16 @@
           <span class="brand-tagline">Custom Homes &amp; Remodeling</span>
         </span>
       </a>
+
       <button class="nav-toggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
+
       <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
         <a href="subcontractors.html">Subcontractors</a>
-        <a href="about.html">About</a>
+        <a href="about.html" class="active">About</a>
         <a href="contact.html">Contact</a>
         <a href="anchor.html">Anchor</a>
       </nav>
@@ -35,62 +137,98 @@
       <div class="container">
         <h1>About Anchor Homes LLC</h1>
         <p>
-          A construction company grounded in experience, straight talk, and
-          doing right by homeowners.
+          Thoughtfully crafted homes, delivered with care — rooted in integrity and long-standing
+          experience in residential construction.
         </p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container about-grid">
-        <div class="about-highlight">
-          <h2>Meet the Owner – Austin Bream</h2>
-          <p>
-            Anchor Homes LLC is led by <strong>Austin Bream</strong>, a
-            Pennsylvania native with a decade of hands-on construction
-            experience. Austin spent over ten years working in the field,
-            learning the trades, understanding jobsite realities, and seeing
-            firsthand what makes a project run smoothly—or fall behind.
-          </p>
-          <p>
-            Before launching Anchor Homes LLC, Austin served for five years as
-            head of construction for a large home builder. In that role he
-            oversaw scheduling, quality control, trade coordination, and
-            customer walk-throughs across a wide mix of projects. That
-            experience built a deep understanding of how to deliver consistent
-            craftsmanship while keeping budgets and timelines in check.
-          </p>
-          <p>
-            Today, Anchor Homes LLC focuses on a simple foundation:
-            <strong>integrity, clear communication, and taking care of the
-            customer</strong>. That means accurate expectations up front,
-            honest conversations when decisions need to be made, and a steady
-            focus on the details that make a home feel solid for years to come.
-          </p>
+      <div class="container about-wrapper">
+        <div class="about-layout">
+          <!-- Text side -->
+          <div class="about-intro">
+            <h1>Meet the Owner</h1>
+            <p>
+              Anchor Homes LLC is led by <strong>Austin Bream</strong>, a Pennsylvania native with a
+              decade of hands-on construction experience and a proven track record of leading teams in
+              residential homebuilding.
+            </p>
+            <p>
+              Austin has spent over <strong>10 years in construction</strong>, including
+              <strong>5 years as head of construction for a large home builder</strong>. During that
+              time he oversaw ground-up builds, complex remodels, and detailed finishes, learning how
+              to deliver consistent quality while keeping projects on schedule and on budget.
+            </p>
+            <p>
+              Anchor Homes LLC was founded around a simple idea:
+              <strong>do what you say you’re going to do, and take care of people along the way</strong>.
+              That means clear communication, honest expectations, and a commitment to standing behind
+              the work long after the job is done.
+            </p>
+          </div>
+
+          <!-- Owner photo card -->
+          <aside class="about-owner-card">
+            <!-- This is where owner.jpg is used -->
+            <img
+              src="owner.jpg"
+              alt="Photo of Austin Bream, owner of Anchor Homes LLC"
+              class="about-owner-photo"
+            />
+            <div class="about-owner-name">Austin Bream</div>
+            <div class="about-owner-title">Owner &amp; Builder</div>
+            <div class="about-owner-text">
+              <p>
+                “My goal is to make the building process feel calm, organized, and transparent for
+                every customer we work with. Your home is a big investment — you deserve a builder who
+                treats it that way.”
+              </p>
+            </div>
+          </aside>
         </div>
 
-        <aside class="about-meta">
-          <h3 style="margin-top: 0;">How we work</h3>
-          <ul style="padding-left: 1.1rem; margin-top: 0.5rem;">
-            <li>Transparent budgeting and scope discussions.</li>
-            <li>Regular check-ins and walk-throughs with homeowners.</li>
-            <li>Trusted subcontractors held to clear quality standards.</li>
-            <li>Job sites kept organized and respectful of your property.</li>
-          </ul>
-
-          <h3 style="margin-top: 1.5rem;">What you can expect</h3>
-          <ul style="padding-left: 1.1rem; margin-top: 0.5rem;">
-            <li>Real timelines and realistic options, not overselling.</li>
-            <li>Attention to the structure you can’t see, not just the finishes.</li>
-            <li>Responsiveness when questions come up during and after the job.</li>
-          </ul>
-
-          <p style="margin-top: 1.5rem;">
-            Whether you’re planning a new build or a significant renovation,
-            Anchor Homes LLC approaches your project with the mindset that
-            it should feel good not just on the day you move in, but ten years later.
+        <div class="about-values">
+          <h2>What Anchor Homes Stands For</h2>
+          <p>
+            Every project is guided by a few core principles that shape how we build and how we serve
+            our customers.
           </p>
-        </aside>
+
+          <div class="about-values-list">
+            <div class="about-value-card">
+              <h3>Integrity first</h3>
+              <p>
+                We believe in doing the right thing even when no one is looking — from how we price
+                jobs to how we handle surprises on site.
+              </p>
+            </div>
+
+            <div class="about-value-card">
+              <h3>Customer-focused</h3>
+              <p>
+                Clear communication, regular updates, and respect for your time and budget are built
+                into every stage of the project.
+              </p>
+            </div>
+
+            <div class="about-value-card">
+              <h3>Craftsmanship &amp; detail</h3>
+              <p>
+                From framing to finishes, we work with trades and materials that reflect the level of
+                quality we’d expect in our own homes.
+              </p>
+            </div>
+
+            <div class="about-value-card">
+              <h3>Long-term relationships</h3>
+              <p>
+                Our goal is to be the builder you call back for the next project — and the one you feel
+                confident recommending to family and friends.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -98,7 +236,7 @@
   <footer class="site-footer">
     <div class="container site-footer-inner">
       <span>&copy; <span id="year"></span> Anchor Homes LLC.</span>
-      <span>Led by experience. Guided by integrity.</span>
+      <span>Built on integrity.</span>
     </div>
   </footer>
 
