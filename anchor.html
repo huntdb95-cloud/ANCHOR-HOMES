@@ -116,6 +116,168 @@
       color: #6b7280;
       margin-top: 0.75rem;
     }
+
+    /* COI tracker styles */
+    .coi-form-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 0.6rem;
+      align-items: flex-end;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .coi-form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .coi-alert-bar {
+      margin-top: 0.75rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      background: #fffbeb;
+      padding: 0.6rem 0.75rem;
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    .coi-alert-title {
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: #92400e;
+    }
+
+    .coi-alert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .coi-alert-chip {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: #f97316;
+      color: #ffffff;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .coi-filter-bar {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .coi-filter-label {
+      color: #6b7280;
+      margin-right: 0.25rem;
+    }
+
+    .coi-filter-btn {
+      font-size: 0.8rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.18);
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .coi-filter-btn.active {
+      background: #0f766e;
+      border-color: #0f766e;
+      color: #ffffff;
+    }
+
+    .coi-table-wrapper {
+      margin-top: 0.9rem;
+      overflow-x: auto;
+    }
+
+    table.coi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: #ffffff;
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+
+    .coi-table thead {
+      background: #e5e7eb;
+    }
+
+    .coi-table th,
+    .coi-table td {
+      padding: 0.5rem 0.6rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+      white-space: nowrap;
+    }
+
+    .coi-table th {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .coi-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .coi-status {
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .coi-status-ok {
+      background: #ecfdf3;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .coi-status-due {
+      background: #fffbeb;
+      color: #92400e;
+      border: 1px solid #fed7aa;
+    }
+
+    .coi-status-expired {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .coi-row-due {
+      background: #fffbeb;
+    }
+
+    .coi-row-expired {
+      background: #fef2f2;
+    }
+
+    .coi-empty {
+      font-size: 0.85rem;
+      color: #6b7280;
+      padding: 0.4rem 0.1rem 0.2rem;
+    }
+
+    .coi-delete-btn {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.18);
+      background: #ffffff;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -191,10 +353,11 @@
         <div class="form-card anchor-dashboard" id="anchor-dashboard" style="display:none;margin-top:1.5rem;">
           <h2>Documents</h2>
           <p style="font-size:0.9rem;margin-top:0;margin-bottom:1rem;">
-            Use the embedded Box widget or the shortcuts below to manage your
+            Use the embedded Box widget or the shortcut below to manage your
             subcontractor and project documents.
           </p>
 
+          <!-- Box file manager card -->
           <div class="anchor-section-card">
             <h3>Anchor File Manager</h3>
             <p>
@@ -233,10 +396,123 @@
             </p>
           </div>
 
+          <!-- Subcontractor COI Tracker -->
+          <div class="anchor-section-card" id="coi-card">
+            <h3>Subcontractor COI Tracker</h3>
+            <p>
+              Track Workers Compensation and General Liability renewal dates for each
+              subcontractor. When a renewal date is within 30 days, it will appear in
+              the COI alert bar so you know to request an updated certificate before
+              paying them.
+            </p>
+
+            <!-- Add COI form -->
+            <form id="coi-form">
+              <div class="coi-form-grid">
+                <div>
+                  <label class="form-label" for="coi-name">Subcontractor name</label>
+                  <input
+                    id="coi-name"
+                    name="coi_name"
+                    class="form-input"
+                    placeholder="e.g., Smith Electric LLC"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="form-label" for="coi-wc-date">
+                    Workers Comp renewal
+                  </label>
+                  <input
+                    id="coi-wc-date"
+                    name="coi_wc_date"
+                    type="date"
+                    class="form-input"
+                  />
+                </div>
+                <div>
+                  <label class="form-label" for="coi-gl-date">
+                    General Liability renewal
+                  </label>
+                  <input
+                    id="coi-gl-date"
+                    name="coi_gl_date"
+                    type="date"
+                    class="form-input"
+                  />
+                </div>
+                <div>
+                  <button type="submit" class="btn primary" style="width:100%;min-width:120px;">
+                    Add / Update
+                  </button>
+                </div>
+              </div>
+              <p style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;">
+                Tip: You can leave one of the dates blank if a subcontractor only has
+                Workers Comp or only General Liability at the moment.
+              </p>
+            </form>
+
+            <!-- COI alert bar (shows only when there are renewals within 30 days) -->
+            <div class="coi-alert-bar" id="coi-alert-bar">
+              <div class="coi-alert-title">Renewals within 30 days</div>
+              <div class="coi-alert-list" id="coi-alert-list"></div>
+            </div>
+
+            <!-- Quick filter bar -->
+            <div class="coi-filter-bar">
+              <span class="coi-filter-label">Show:</span>
+              <button type="button" class="coi-filter-btn active" data-filter="all">
+                All
+              </button>
+              <button type="button" class="coi-filter-btn" data-filter="due">
+                Due soon (≤ 30 days)
+              </button>
+              <button type="button" class="coi-filter-btn" data-filter="expired">
+                Expired
+              </button>
+              <button type="button" class="coi-filter-btn" data-filter="ok">
+                Active / OK
+              </button>
+            </div>
+
+            <!-- COI table -->
+            <div class="coi-table-wrapper">
+              <table class="coi-table" id="coi-table">
+                <thead>
+                  <tr>
+                    <th>Subcontractor</th>
+                    <th>WC renewal</th>
+                    <th>WC days</th>
+                    <th>WC status</th>
+                    <th>GL renewal</th>
+                    <th>GL days</th>
+                    <th>GL status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="coi-table-body">
+                  <!-- Filled by JS -->
+                </tbody>
+              </table>
+              <div class="coi-empty" id="coi-empty-message">
+                No subcontractors tracked yet. Add a name and at least one renewal
+                date above.
+              </div>
+            </div>
+
+            <p class="anchor-note">
+              Note: COI reminders are stored in your browser only (using local
+              storage). If you clear your browser data or switch devices, you’ll need
+              to re-enter this list.
+            </p>
+          </div>
+
           <p class="anchor-note">
             This login is a simple page-level password for convenience. Real security
-            for your files is handled by Box — only accounts you grant access to
-            will be able to view or modify your documents.
+            for your files and COI documents is handled by Box and your storage
+            providers — only accounts you grant access to will be able to view or
+            modify your documents.
           </p>
         </div>
       </div>
@@ -277,6 +553,319 @@
         loginError.style.display = "inline";
       }
     });
+
+    // ---------------------------
+    // Subcontractor COI Tracker
+    // ---------------------------
+
+    const COI_KEY = "anchor_coi_tracker_v2"; // new key since structure changed
+
+    const coiForm = document.getElementById("coi-form");
+    const coiNameInput = document.getElementById("coi-name");
+    const coiWcInput = document.getElementById("coi-wc-date");
+    const coiGlInput = document.getElementById("coi-gl-date");
+    const coiTableBody = document.getElementById("coi-table-body");
+    const coiEmptyMessage = document.getElementById("coi-empty-message");
+    const coiAlertBar = document.getElementById("coi-alert-bar");
+    const coiAlertList = document.getElementById("coi-alert-list");
+
+    const coiFilterButtons = document.querySelectorAll(".coi-filter-btn");
+    let currentFilter = "all";
+
+    function loadCoiList() {
+      try {
+        const raw = localStorage.getItem(COI_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) {
+        console.error("Error loading COI list:", e);
+        return [];
+      }
+    }
+
+    function saveCoiList(list) {
+      try {
+        localStorage.setItem(COI_KEY, JSON.stringify(list));
+      } catch (e) {
+        console.error("Error saving COI list:", e);
+      }
+    }
+
+    function daysBetween(today, target) {
+      const oneDay = 24 * 60 * 60 * 1000;
+      const start = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+      const end = new Date(target.getFullYear(), target.getMonth(), target.getDate()).getTime();
+      return Math.round((end - start) / oneDay);
+    }
+
+    function formatDateDisplay(dateStr) {
+      if (!dateStr) return "";
+      const d = new Date(dateStr + "T00:00:00");
+      if (isNaN(d.getTime())) return dateStr;
+      return d.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
+    function computeStatus(dateStr, today) {
+      if (!dateStr) {
+        return {
+          diff: null,
+          text: "Not set",
+          statusClass: "coi-status-ok",
+          rowFlag: null
+        };
+      }
+      const dueDate = new Date(dateStr + "T00:00:00");
+      if (isNaN(dueDate.getTime())) {
+        return {
+          diff: null,
+          text: "Invalid date",
+          statusClass: "coi-status-expired",
+          rowFlag: "expired"
+        };
+      }
+      const diff = daysBetween(today, dueDate);
+      if (diff < 0) {
+        return {
+          diff,
+          text: "Expired",
+          statusClass: "coi-status-expired",
+          rowFlag: "expired"
+        };
+      } else if (diff <= 30) {
+        return {
+          diff,
+          text: diff === 0 ? "Due today" : `Due in ${diff} day${diff === 1 ? "" : "s"}`,
+          statusClass: "coi-status-due",
+          rowFlag: "due"
+        };
+      } else {
+        return {
+          diff,
+          text: `OK (${diff} days)`,
+          statusClass: "coi-status-ok",
+          rowFlag: "ok"
+        };
+      }
+    }
+
+    function renderCoiList() {
+      const list = loadCoiList();
+      coiTableBody.innerHTML = "";
+      coiAlertList.innerHTML = "";
+
+      const today = new Date();
+      let anyDueSoon = false;
+
+      if (!list.length) {
+        coiEmptyMessage.style.display = "block";
+      } else {
+        coiEmptyMessage.style.display = "none";
+      }
+
+      list
+        .slice()
+        .sort((a, b) => {
+          // sort by earliest of WC/GL date for convenience
+          const aDate = a.wcDate || a.glDate || "";
+          const bDate = b.wcDate || b.glDate || "";
+          return new Date(aDate) - new Date(bDate);
+        })
+        .forEach((item, index) => {
+          const tr = document.createElement("tr");
+
+          const wcStatus = computeStatus(item.wcDate, today);
+          const glStatus = computeStatus(item.glDate, today);
+
+          // Determine row highlight & overall status for filtering
+          let rowStatus = "ok"; // default
+
+          if (wcStatus.rowFlag === "expired" || glStatus.rowFlag === "expired") {
+            tr.classList.add("coi-row-expired");
+            rowStatus = "expired";
+          } else if (wcStatus.rowFlag === "due" || glStatus.rowFlag === "due") {
+            tr.classList.add("coi-row-due");
+            rowStatus = "due";
+          } else {
+            rowStatus = "ok";
+          }
+
+          tr.dataset.status = rowStatus;
+
+          // Name
+          const nameTd = document.createElement("td");
+          nameTd.textContent = item.name;
+          tr.appendChild(nameTd);
+
+          // WC date
+          const wcDateTd = document.createElement("td");
+          wcDateTd.textContent = formatDateDisplay(item.wcDate);
+          tr.appendChild(wcDateTd);
+
+          // WC days
+          const wcDaysTd = document.createElement("td");
+          wcDaysTd.textContent =
+            wcStatus.diff === null || isNaN(wcStatus.diff) ? "-" : wcStatus.diff;
+          tr.appendChild(wcDaysTd);
+
+          // WC status
+          const wcStatusTd = document.createElement("td");
+          const wcSpan = document.createElement("span");
+          wcSpan.className = "coi-status " + wcStatus.statusClass;
+          wcSpan.textContent = wcStatus.text;
+          wcStatusTd.appendChild(wcSpan);
+          tr.appendChild(wcStatusTd);
+
+          // GL date
+          const glDateTd = document.createElement("td");
+          glDateTd.textContent = formatDateDisplay(item.glDate);
+          tr.appendChild(glDateTd);
+
+          // GL days
+          const glDaysTd = document.createElement("td");
+          glDaysTd.textContent =
+            glStatus.diff === null || isNaN(glStatus.diff) ? "-" : glStatus.diff;
+          tr.appendChild(glDaysTd);
+
+          // GL status
+          const glStatusTd = document.createElement("td");
+          const glSpan = document.createElement("span");
+          glSpan.className = "coi-status " + glStatus.statusClass;
+          glSpan.textContent = glStatus.text;
+          glStatusTd.appendChild(glSpan);
+          tr.appendChild(glStatusTd);
+
+          // Actions
+          const actionsTd = document.createElement("td");
+          const delBtn = document.createElement("button");
+          delBtn.type = "button";
+          delBtn.className = "coi-delete-btn";
+          delBtn.textContent = "Remove";
+          delBtn.addEventListener("click", () => {
+            const current = loadCoiList();
+            current.splice(index, 1);
+            saveCoiList(current);
+            renderCoiList();
+          });
+          actionsTd.appendChild(delBtn);
+          tr.appendChild(actionsTd);
+
+          coiTableBody.appendChild(tr);
+
+          // Alert chips for WC / GL due within 30 days
+          if (wcStatus.rowFlag === "due" && wcStatus.diff !== null && !isNaN(wcStatus.diff)) {
+            anyDueSoon = true;
+            const chip = document.createElement("div");
+            chip.className = "coi-alert-chip";
+            chip.textContent =
+              item.name +
+              " – WC " +
+              (wcStatus.diff === 0
+                ? "due today"
+                : `due in ${wcStatus.diff} day${wcStatus.diff === 1 ? "" : "s"}`);
+            coiAlertList.appendChild(chip);
+          }
+
+          if (glStatus.rowFlag === "due" && glStatus.diff !== null && !isNaN(glStatus.diff)) {
+            anyDueSoon = true;
+            const chip = document.createElement("div");
+            chip.className = "coi-alert-chip";
+            chip.textContent =
+              item.name +
+              " – GL " +
+              (glStatus.diff === 0
+                ? "due today"
+                : `due in ${glStatus.diff} day${glStatus.diff === 1 ? "" : "s"}`);
+            coiAlertList.appendChild(chip);
+          }
+        });
+
+      coiAlertBar.style.display = anyDueSoon ? "block" : "none";
+
+      // Apply current filter to freshly rendered rows
+      applyCoiFilter(currentFilter);
+    }
+
+    function applyCoiFilter(mode) {
+      currentFilter = mode;
+      const rows = coiTableBody.querySelectorAll("tr");
+
+      rows.forEach((row) => {
+        const status = row.dataset.status || "ok";
+
+        if (mode === "all") {
+          row.style.display = "";
+        } else if (mode === "due") {
+          row.style.display = status === "due" ? "" : "none";
+        } else if (mode === "expired") {
+          row.style.display = status === "expired" ? "" : "none";
+        } else if (mode === "ok") {
+          row.style.display = status === "ok" ? "" : "none";
+        }
+      });
+
+      // Update active button styling
+      coiFilterButtons.forEach((btn) => {
+        if (btn.dataset.filter === mode) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+    }
+
+    coiFilterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const mode = btn.dataset.filter || "all";
+        applyCoiFilter(mode);
+      });
+    });
+
+    coiForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = coiNameInput.value.trim();
+      const wcDate = coiWcInput.value;
+      const glDate = coiGlInput.value;
+
+      if (!name) return;
+
+      if (!wcDate && !glDate) {
+        alert("Please enter at least one renewal date (Workers Comp or General Liability).");
+        return;
+      }
+
+      const list = loadCoiList();
+      const existingIndex = list.findIndex(
+        (item) => item.name.toLowerCase() === name.toLowerCase()
+      );
+
+      if (existingIndex >= 0) {
+        const current = list[existingIndex];
+        // Only overwrite a date if a new one was provided
+        if (wcDate) current.wcDate = wcDate;
+        if (glDate) current.glDate = glDate;
+        list[existingIndex] = current;
+      } else {
+        list.push({
+          name,
+          wcDate: wcDate || "",
+          glDate: glDate || ""
+        });
+      }
+
+      saveCoiList(list);
+      renderCoiList();
+
+      coiNameInput.value = "";
+      coiWcInput.value = "";
+      coiGlInput.value = "";
+    });
+
+    document.addEventListener("DOMContentLoaded", renderCoiList);
   </script>
 </body>
 </html>
