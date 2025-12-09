@@ -373,35 +373,31 @@
 
     // Initialize signature pads (black ink)
     const agreementSigCanvas = document.getElementById("agreement-signature-pad");
-    const w9SigCanvas = document.getElementById("w9-signature-pad");
+const w9SigCanvas = document.getElementById("w9-signature-pad");
 
-    function resizeSignatureCanvas(canvas) {
-      if (!canvas) return;
-      const ratio = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * ratio;
-      canvas.height = rect.height * ratio;
-      const ctx = canvas.getContext("2d");
-      ctx.scale(ratio, ratio);
-    }
+function initSignatureCanvas(canvas) {
+  if (!canvas) return;
+  const ratio = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * ratio;
+  canvas.height = rect.height * ratio;
+  const ctx = canvas.getContext("2d");
+  ctx.scale(ratio, ratio);
+}
 
-    resizeSignatureCanvas(agreementSigCanvas);
-    resizeSignatureCanvas(w9SigCanvas);
+// Initialize once on load — no resize listener (so scrolling won't clear)
+initSignatureCanvas(agreementSigCanvas);
+initSignatureCanvas(w9SigCanvas);
 
-    window.addEventListener("resize", () => {
-      resizeSignatureCanvas(agreementSigCanvas);
-      resizeSignatureCanvas(w9SigCanvas);
-    });
+const agreementPad = new SignaturePad(agreementSigCanvas, {
+  penColor: "#000000",
+  backgroundColor: "rgba(0,0,0,0)"
+});
 
-    const agreementPad = new SignaturePad(agreementSigCanvas, {
-      penColor: "#000000",
-      backgroundColor: "rgba(0,0,0,0)"
-    });
-
-    const w9Pad = new SignaturePad(w9SigCanvas, {
-      penColor: "#000000",
-      backgroundColor: "rgba(0,0,0,0)"
-    });
+const w9Pad = new SignaturePad(w9SigCanvas, {
+  penColor: "#000000",
+  backgroundColor: "rgba(0,0,0,0)"
+});
 
     // Clear buttons
     document.querySelectorAll(".btn-signature-clear").forEach((btn) => {
