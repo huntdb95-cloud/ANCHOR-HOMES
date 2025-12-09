@@ -6,8 +6,6 @@
   <title>Anchor Dashboard | Anchor Homes LLC</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Keep extra styling minimal so it matches the rest of the site */
-
     .anchor-wrapper {
       margin: 0 auto 2.5rem;
       max-width: 960px;
@@ -44,19 +42,6 @@
       display: none;
     }
 
-    .anchor-section-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      .anchor-section-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
     .anchor-section-card {
       border-radius: 0.75rem;
       border: 1px solid rgba(15, 23, 42, 0.08);
@@ -64,7 +49,7 @@
       background: #f9fafb;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.75rem;
     }
 
     .anchor-section-card h3 {
@@ -79,16 +64,17 @@
     .anchor-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+      gap: 0.6rem;
+      margin-top: 0.25rem;
     }
 
     .anchor-links a {
       font-size: 0.85rem;
       text-decoration: none;
-      padding: 0.35rem 0.7rem;
+      padding: 0.45rem 0.9rem;
       border-radius: 999px;
       border: 1px solid rgba(15, 23, 42, 0.18);
+      background: #ffffff;
     }
 
     .anchor-iframe-wrapper {
@@ -102,8 +88,9 @@
     .anchor-iframe-wrapper iframe {
       display: block;
       width: 100%;
-      min-height: 320px;
       border: 0;
+      /* Keep height similar to what Box suggests */
+      min-height: 550px;
     }
 
     .anchor-note {
@@ -186,65 +173,70 @@
         <div class="form-card anchor-dashboard" id="anchor-dashboard" style="display:none;margin-top:1.5rem;">
           <h2>Documents</h2>
           <p style="font-size:0.9rem;margin-top:0;margin-bottom:1rem;">
-            Use the folders below to upload images, PDFs, Word documents, and other files.
-            You can rename, organize, and label them directly in Google Drive.
+            Use the embedded Box widget or the shortcuts below to manage your
+            subcontractor and project documents.
           </p>
 
-          <div class="anchor-section-grid">
-            <!-- Subcontractor Documents -->
-            <div class="anchor-section-card">
-              <h3>Subcontractor Documents</h3>
-              <p>
-                Store W-9s, subcontractor agreements, insurance certificates, and any
-                trade-specific documentation.
-              </p>
+          <div class="anchor-section-card">
+            <h3>Anchor File Manager</h3>
+            <p>
+              The Box widget below lets you browse, preview, and manage files. Use
+              it as your main “file explorer” for Anchor Homes.
+            </p>
 
-              <div class="anchor-links">
-                <!-- Subcontractor folder link -->
-                <a href="https://drive.google.com/drive/folders/1mpOzYptMWAvOIL4Fc6zM0kIKTQyuaHD2"
-                   target="_blank" rel="noopener">
-                  Open in Google Drive
-                </a>
-              </div>
+            <div class="anchor-links">
+              <!-- Box main link (optional – opens Box in a full tab) -->
+              <a
+                href="https://app.box.com/folder/0" 
+                target="_blank"
+                rel="noopener"
+              >
+                Open Box in a new tab
+              </a>
 
-              <!-- Embedded folder view -->
-              <div class="anchor-iframe-wrapper">
-                <iframe
-                  src="https://drive.google.com/embeddedfolderview?id=1mpOzYptMWAvOIL4Fc6zM0kIKTQyuaHD2#grid"
-                  loading="lazy"
-                ></iframe>
-              </div>
+              <!-- Subcontractor Documents folder (Google Drive shortcut) -->
+              <a
+                href="https://drive.google.com/drive/folders/1mpOzYptMWAvOIL4Fc6zM0kIKTQyuaHD2"
+                target="_blank"
+                rel="noopener"
+              >
+                Subcontractor Documents (Drive)
+              </a>
+
+              <!-- Project Documents folder (Google Drive shortcut) -->
+              <a
+                href="https://drive.google.com/drive/folders/1L_LBbcQ9kzGcABzyaAZJGg0GhBJjTNjW"
+                target="_blank"
+                rel="noopener"
+              >
+                Project Documents (Drive)
+              </a>
             </div>
 
-            <!-- Project Documents -->
-            <div class="anchor-section-card">
-              <h3>Project Documents</h3>
-              <p>
-                Keep plans, permits, photos, and progress documents organized by job.
-              </p>
-
-              <div class="anchor-links">
-                <!-- Project folder link -->
-                <a href="https://drive.google.com/drive/folders/1L_LBbcQ9kzGcABzyaAZJGg0GhBJjTNjW"
-                   target="_blank" rel="noopener">
-                  Open in Google Drive
-                </a>
-              </div>
-
-              <!-- Embedded folder view -->
-              <div class="anchor-iframe-wrapper">
-                <iframe
-                  src="https://drive.google.com/embeddedfolderview?id=1L_LBbcQ9kzGcABzyaAZJGg0GhBJjTNjW#grid"
-                  loading="lazy"
-                ></iframe>
-              </div>
+            <!-- Box embed widget -->
+            <div class="anchor-iframe-wrapper">
+              <iframe
+                src="https://app.box.com/embed/s/duirh1egpllrudljdi66mrzsmv37uvsw?sortColumn=date"
+                width="800"
+                height="550"
+                frameborder="0"
+                allowfullscreen
+                webkitallowfullscreen
+                msallowfullscreen
+              ></iframe>
             </div>
+
+            <p class="anchor-note">
+              You can upload files, create folders, and manage documents directly in
+              this Box embed. For more advanced actions, use the “Open Box in a new
+              tab” button above.
+            </p>
           </div>
 
           <p class="anchor-note">
-            Note: This login is a simple page-level password for convenience. For real
-            security, access to these folders is controlled by your Google account and
-            Google Drive sharing settings.
+            This login is a simple page-level password for convenience. Real security
+            for your files is handled by Box and Google Drive — only accounts you
+            grant access to will be able to view or modify your documents.
           </p>
         </div>
       </div>
