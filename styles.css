@@ -744,6 +744,28 @@ main {
   left: 27%;
   width: 52%;
 }
+/* W-9 tax classification checkbox row */
+.w9-tax-class-group {
+  position: absolute;
+  top: 23%;           /* adjust if needed to align with W-9 row */
+  left: 18%;
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  font-size: 7px;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.w9-tax-class-group label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.w9-tax-class-group input[type="checkbox"] {
+  margin-right: 2px;
+}
 
 .w9-tax-class {
   top: 23%;
