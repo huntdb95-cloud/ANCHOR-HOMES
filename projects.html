@@ -73,7 +73,7 @@
     </div>
   </footer>
 
-  <script src="scripts.js"></script>
+    <script src="scripts.js"></script>
 
   <!-- Leaflet JS -->
   <script
@@ -85,39 +85,55 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Example projects — update coordinates, names, and image paths as needed.
+    // Updated projects – 5 pins in Middle Tennessee
     const projects = [
       {
-        name: "Lakeview Custom Home",
-        location: "Example Town, PA",
-        lat: 40.2732,
-        lng: -76.8867,
-        image: "images/project1-lakeview.jpg",
-        scope: "Ground-up custom build"
+        name: "Old Hickory Lake Renovation",
+        location: "Old Hickory, TN",
+        lat: 36.2558,
+        lng: -86.6420,
+        image: "images/project-old-hickory.jpg",
+        scope: "Lakeside renovation and exterior updates"
       },
       {
-        name: "Farmhouse Renovation",
-        location: "Example Borough, PA",
-        lat: 40.1393,
-        lng: -76.3077,
-        image: "images/project2-farmhouse.jpg",
-        scope: "Whole-home renovation"
+        name: "Nolensville New Build",
+        location: "Nolensville, TN",
+        lat: 35.9568,
+        lng: -86.6669,
+        image: "images/project-nolensville.jpg",
+        scope: "Ground-up custom home"
       },
       {
-        name: "Modern Kitchen & Main Floor",
-        location: "Example City, PA",
-        lat: 40.0379,
-        lng: -76.3055,
-        image: "images/project3-kitchen.jpg",
-        scope: "Kitchen + main living refresh"
+        name: "Sylvan Park Remodel",
+        location: "Sylvan Park, Nashville, TN",
+        lat: 36.1436,
+        lng: -86.8390,
+        image: "images/project-sylvan-park.jpg",
+        scope: "Interior remodel in historic neighborhood"
+      },
+      {
+        name: "Franklin Farmhouse",
+        location: "Franklin, TN",
+        lat: 35.9251,
+        lng: -86.8689,
+        image: "images/project-franklin.jpg",
+        scope: "Modern farmhouse with classic details"
+      },
+      {
+        name: "Arrington Estate Home",
+        location: "Arrington, TN",
+        lat: 35.8681,
+        lng: -86.7083,
+        image: "images/project-arrington.jpg",
+        scope: "Estate-style custom home"
       }
     ];
 
     const map = L.map("projects-map");
 
-    // Center map roughly around central PA; adjust as needed
-    const defaultCenter = [40.25, -76.8];
-    map.setView(defaultCenter, 8);
+    // Center over Middle Tennessee
+    const defaultCenter = [36.0, -86.8];
+    map.setView(defaultCenter, 9);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 18,
@@ -147,7 +163,7 @@
 
     // Populate side list
     const listEl = document.getElementById("project-list");
-    projects.forEach((project, index) => {
+    projects.forEach((project) => {
       const li = document.createElement("li");
       li.innerHTML = `
         <span class="project-name">${project.name}</span><br />
