@@ -721,10 +721,12 @@ main {
 /* Generic overlay field styled to look like handwriting/typed text */
 .w9-input {
   position: absolute;
-  font-size: 11px;
-  padding: 1px 2px;
-  border: none;
-  border-bottom: 1px solid #000000;
+  font-size: 9px;                  /* smaller text so it fits inside lines */
+  line-height: 1.1;                /* keeps text height compact */
+  height: 1.1em;                   /* prevents clipping when captured */
+  padding: 0;                      /* no extra vertical padding */
+  margin: 0;
+  border: none;                    /* let the printed form’s line show */
   background: transparent;
   color: #000000;
   font-family: "Helvetica", Arial, sans-serif;
