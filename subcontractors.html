@@ -408,6 +408,140 @@ const w9Pad = new SignaturePad(w9SigCanvas, {
         }
       });
     });
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const form = document.getElementById("sub-form");
+    const statusEl = document.getElementById("sub-status");
+
+    const agreementSigCanvas = document.getElementById("agreement-signature-pad");
+    const w9SigCanvas = document.getElementById("w9-signature-pad");
+
+    function initSignatureCanvas(canvas) {
+      if (!canvas) return;
+      const ratio = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * ratio;
+      canvas.height = rect.height * ratio;
+      const ctx = canvas.getContext("2d");
+      ctx.scale(ratio, ratio);
+    }
+
+    // Initialize signature canvases once
+    initSignatureCanvas(agreementSigCanvas);
+    initSignatureCanvas(w9SigCanvas);
+
+    const agreementPad = new SignaturePad(agreementSigCanvas, {
+      penColor: "#000000",
+      backgroundColor: "rgba(0,0,0,0)"
+    });
+
+    const w9Pad = new SignaturePad(w9SigCanvas, {
+      penColor: "#000000",
+      backgroundColor: "rgba(0,0,0,0)"
+    });
+
+    // Clear agreement signature button
+    document.querySelectorAll(".btn-signature-clear").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-target");
+        if (targetId === "agreement-signature-pad") {
+          agreementPad.clear();
+        }
+      });
+    });
+
+    /* NEW: copy all W-9 input text into overlay spans for capture */
+    function mirrorW9InputsToOverlays() {
+      const w9Wrapper = document.getElementById("w9-capture");
+      if (!w9Wrapper) return;
+
+      // Remove any old overlays
+      w9Wrapper.querySelectorAll(".w9-text-overlay").forEach((el) => el.remove());
+
+      // For each .w9-input, create a matching text span
+      const inputs = w9Wrapper.querySelectorAll(".w9-input");
+      inputs.forEach((input) => {
+        const value = input.value.trim();
+        if (!value) return;
+
+        const span = document.createElement("span");
+        // share same positioning classes (e.g. w9-name, w9-address, etc.)
+        span.className = input.className + " w9-text-overlay";
+        span.textContent = value;
+        w9Wrapper.appendChild(span);
+      });
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      statusEl.className = "";
+
+      // Make sure both signatures exist
+      if (agreementPad.isEmpty() || w9Pad.isEmpty()) {
+        statusEl.className = "error";
+        statusEl.textContent =
+          "Please sign both the subcontractor agreement and the W-9 before submitting.";
+        return;
+      }
+
+      statusEl.textContent = "Preparing documents… please wait.";
+
+      try {
+        const agreementEl = document.getElementById("agreement-capture");
+        const w9El = document.getElementById("w9-capture");
+
+        // >>> NEW: ensure all W-9 text is mirrored into visible spans
+        mirrorW9InputsToOverlays();
+
+        // Capture both sections as images (signatures + text + checkboxes)
+        const [agreementCanvas, w9Canvas] = await Promise.all([
+          html2canvas(agreementEl, { scale: 2 }),
+          html2canvas(w9El, { scale: 2 })
+        ]);
+
+        const agreementBlob = await new Promise((resolve) =>
+          agreementCanvas.toBlob(resolve, "image/png")
+        );
+        const w9Blob = await new Promise((resolve) =>
+          w9Canvas.toBlob(resolve, "image/png")
+        );
+
+        const formData = new FormData(form); // includes all text inputs
+
+        if (agreementBlob) {
+          formData.append("agreement_file", agreementBlob, "subcontractor-agreement.png");
+        }
+        if (w9Blob) {
+          formData.append("w9_file", w9Blob, "w9-filled.png");
+        }
+
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" }
+        });
+
+        if (response.ok) {
+          form.reset();
+          agreementPad.clear();
+          w9Pad.clear();
+          statusEl.className = "success";
+          statusEl.textContent =
+            "Thank you! Your subcontractor information, agreement, and W-9 have been submitted.";
+        } else {
+          statusEl.className = "error";
+          statusEl.textContent =
+            "There was a problem submitting the form. Please try again or contact us directly.";
+        }
+      } catch (err) {
+        console.error(err);
+        statusEl.className = "error";
+        statusEl.textContent =
+          "Unexpected error preparing the documents. Please refresh the page and try again.";
+      }
+    });
+  </script>
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
