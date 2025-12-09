@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anchors Homes LLC | Custom Homes & Remodeling</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Anchors Homes LLC logo" class="brand-logo" />
+        <span class="brand-text">
+          <span class="brand-name">Anchors Homes LLC</span>
+          <span class="brand-tagline">Custom Homes &amp; Remodeling</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="subcontractors.html">Subcontractors</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="hero-eyebrow">Built on integrity</div>
+          <h1>Thoughtfully crafted homes, delivered with care.</h1>
+          <p>
+            Anchors Homes LLC partners with homeowners to design and build
+            spaces that feel solid, honest, and personal—from full custom
+            homes to major renovations.
+          </p>
+          <div class="hero-actions">
+            <a href="projects.html" class="btn primary">View Projects</a>
+            <a href="contact.html" class="btn secondary">Request a Consultation</a>
+          </div>
+        </div>
+
+        <div class="hero-slider" data-slider="hero">
+          <!-- Replace these image paths with your own project photos -->
+          <div class="slide active">
+            <img src="images/hero1.jpg" alt="Custom home exterior" />
+          </div>
+          <div class="slide">
+            <img src="images/hero2.jpg" alt="Open concept living room" />
+          </div>
+          <div class="slide">
+            <img src="images/hero3.jpg" alt="Modern kitchen remodel" />
+          </div>
+          <div class="slide">
+            <img src="images/hero4.jpg" alt="Outdoor living space" />
+          </div>
+          <div class="slide">
+            <img src="images/hero5.jpg" alt="Fine trim and details" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services / Highlights -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>What we do</h2>
+          <p>
+            From ground-up construction to major renovations, Anchors Homes LLC
+            delivers straightforward communication, clear expectations, and
+            quality workmanship.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <h3>Custom Homes</h3>
+            <p>
+              Full-service new construction with a focus on smart layout,
+              lasting materials, and a clean, timeless look tailored to your
+              lot and lifestyle.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Major Renovations</h3>
+            <p>
+              Kitchens, additions, full-gut remodels, and whole-home updates
+              that align with how your family actually lives day to day.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Project Management</h3>
+            <p>
+              Tight scheduling, trade coordination, and jobsite oversight backed
+              by years of experience running construction for a large home builder.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews slider -->
+    <section class="reviews">
+      <div class="container">
+        <div class="reviews-inner">
+          <h2>What our customers say</h2>
+          <div class="reviews-slider" data-slider="reviews">
+            <div class="review-slide active">
+              <div class="review-text">
+                “Anchors Homes LLC made our renovation feel straightforward and manageable.
+                The crew was respectful, the jobsite stayed clean, and the final result
+                matched exactly what we discussed up front.”
+              </div>
+              <div class="review-author">Danny H.</div>
+            </div>
+            <div class="review-slide">
+              <div class="review-text">
+                “We hired Anchors Homes LLC for a kitchen and main-floor remodel.
+                Austin communicated clearly, kept us in the loop on timelines, and
+                the craftsmanship is rock solid.”
+              </div>
+              <div class="review-author">Alex B.</div>
+            </div>
+            <div class="review-slide">
+              <div class="review-text">
+                “Honest, detail-oriented, and easy to work with. From the first walk-through
+                to the final punch list, we felt taken care of and never surprised.”
+              </div>
+              <div class="review-author">Donnie K.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <span>&copy; <span id="year"></span> Anchors Homes LLC. All rights reserved.</span>
+      <span>Built on integrity. Focused on the details.</span>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
