@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Subcontractors | Anchor Homes LLC</title>
+  <title>Subcontractors | Anchors Homes LLC</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand">
-        <img src="logo.png" alt="Anchor Homes LLC logo" class="brand-logo" />
+        <img src="logo.png" alt="Anchors Homes LLC logo" class="brand-logo" />
         <span class="brand-text">
-          <span class="brand-name">Anchor Homes LLC</span>
+          <span class="brand-name">Anchors Homes LLC</span>
           <span class="brand-tagline">Custom Homes &amp; Remodeling</span>
         </span>
       </a>
+
       <button class="nav-toggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
+
       <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
@@ -30,630 +32,168 @@
   </header>
 
   <main>
+    <!-- Page heading -->
     <section class="page-header">
       <div class="container">
-        <h1>Subcontractor Agreement &amp; W9</h1>
-        <p class="sub-page-intro">
-          Use this page to submit your signed subcontractor agreement and W-9
-          directly to Anchor Homes LLC. Fill in the fields, sign with your
-          mouse or finger, and we’ll receive images of both documents along
-          with your information via Formspree.
+        <h1>Subcontractor Onboarding</h1>
+        <p>
+          Welcome to the Anchors Homes LLC subcontractor portal. There are two items we
+          need on file from every trade partner: a signed subcontractor agreement and a
+          completed W-9. You can complete each form separately using the buttons below.
         </p>
       </div>
     </section>
 
+    <!-- Checklist + buttons -->
     <section class="section">
       <div class="container">
-        <!-- Entire flow is one form -->
-        <form
-          id="sub-form"
-          action="https://formspree.io/f/xdkqdpgd"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          <!-- Basic info (dark card) -->
-          <div class="form-card">
-            <h2 style="margin-top: 0; margin-bottom: 0.75rem;">Basic subcontractor information</h2>
-            <div class="form-grid">
-              <div>
-                <label class="form-label" for="company-name">Company / Individual Name</label>
-                <input class="form-input" type="text" id="company-name" name="company_name" required />
-              </div>
-              <div>
-                <label class="form-label" for="trade">Primary Trade</label>
-                <input class="form-input" type="text" id="trade" name="trade" placeholder="Framing, electrical, plumbing, etc." />
-              </div>
+        <div class="form-card">
+          <h2 style="margin-top: 0; margin-bottom: 0.75rem;">Your checklist</h2>
+          <p style="margin-top: 0; margin-bottom: 1.25rem; font-size: 0.9rem; color: var(--color-text-muted);">
+            This page will show which items you’ve completed on this device. After you
+            submit each form, you’ll be returned here and the corresponding box will be
+            checked.
+          </p>
 
-              <div>
-                <label class="form-label" for="contact-name">Contact Person</label>
-                <input class="form-input" type="text" id="contact-name" name="contact_name" />
-              </div>
-              <div>
-                <label class="form-label" for="contact-phone">Phone</label>
-                <input class="form-input" type="tel" id="contact-phone" name="contact_phone" />
-              </div>
-
-              <div>
-                <label class="form-label" for="contact-email">Email</label>
-                <input class="form-input" type="email" id="contact-email" name="contact_email" required />
-              </div>
+          <!-- Summary pills at top -->
+          <div class="sub-summary">
+            <div class="summary-pill" id="summary-w9">
+              <span class="summary-label">W-9 on file</span>
+              <span class="summary-status"></span>
+            </div>
+            <div class="summary-pill" id="summary-agreement">
+              <span class="summary-label">Subcontractor Agreement signed</span>
+              <span class="summary-status"></span>
             </div>
           </div>
 
-          <!-- Subcontractor Agreement (white card to capture) -->
-          <div id="agreement-capture" class="document-card agreement-card">
-            <h2 style="margin-top: 0;">Subcontractors Agreement</h2>
+          <hr class="sub-divider" />
 
-            <p style="font-size: 0.9rem; line-height: 1.5;">
-              This document is a binding contract, which will serve as a blanket agreement for and
-              between <strong>Anchor Homes LLC</strong>, herein known as
-              <strong>Builder</strong>, and the undersigned, referred to hereafter as
-              <strong>Subcontractor</strong>. By signing, Subcontractor and Builder agree to the
-              terms set forth herein. This agreement shall remain in force from the date hereof and
-              from year to year, unless a change is agreed to in writing by both Builder and
-              Subcontractor. The parties agree to the following:
-            </p>
-
-            <h3>1. GENERAL PERFORMANCE</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              All work of the Subcontractor will be performed in a good and workmanlike manner in
-              accordance with the plans and specifications for each job and must comply with all
-              Federal and State laws, codes, and regulations and all county and/or municipal
-              ordinances and regulations effective where the work is to be performed under this
-              contract. All permits, fees, taxes, and expenses connected with such compliance are to
-              be paid by the Subcontractor.
-            </p>
-
-            <h3>2. INDEPENDENT CONTRACTOR</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              The Builder and Subcontractor agree that the Subcontractor is being hired solely as an
-              independent contractor and that neither the Subcontractor nor Subcontractor’s
-              employees shall be deemed to be employees of the Builder.
-            </p>
-
-            <h3>3. TIME</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              The Subcontractor agrees to promptly begin work as soon as notified by the Builder and
-              to complete the work in a professional and workmanlike manner within a reasonable
-              period of time once work is commenced and in any event by the deadlines established
-              by the Builder in writing. Subcontractor shall cooperate with other trades who are on
-              the jobsite so that each may reasonably complete their respective work within the
-              required time frames, and shall complete Subcontractor’s work in a way that allows
-              dependent trades to complete their work on time. Subcontractor shall provide competent
-              supervision, a sufficient number of skilled workers, and adequate materials to maintain
-              Builder’s work schedule. Subcontractor warrants to Builder that all proper and necessary
-              licenses and permits are in place. If Builder determines that Subcontractor’s work does
-              not conform to the drawings and specifications, or is not of appropriate quality,
-              Builder shall advise Subcontractor, and if Subcontractor does not correct such defects
-              on Builder’s timetable, Builder may correct them and charge back the cost to
-              Subcontractor.
-            </p>
-
-            <h3>4. EXTRAS</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              No deviations from the work specified in the contract will be permitted or paid for
-              unless a written extra work or change order is first agreed upon and signed as
-              required.
-            </p>
-
-            <h3>5. ASSIGNMENT</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              No assignment of this subcontract agreement by Subcontractor is permitted without
-              prior written permission from the Builder.
-            </p>
-
-            <h3>6. HOLD HARMLESS</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              The Subcontractor agrees to protect, defend, and indemnify the Builder against and hold
-              the Builder harmless from any and all claims, demands, liabilities, losses, expenses,
-              suits, and actions (including attorney’s fees) for or on account of any injury to any
-              person, any death resulting from such injury, or any damage to property which may arise
-              (or be alleged to have arisen) out of or in connection with the work covered by this
-              subcontract, even though such injury, death, or damage may be (or be alleged to be)
-              attributable in part to negligence or other fault on the part of the Builder or its
-              officers, agents, or employees. The obligation of Subcontractor to indemnify Builder
-              shall not be enforceable if and only if it is determined by arbitration or judicial
-              proceeding that the injury, death, or damages complained of were attributable solely to
-              the fault or negligence of the Builder and not in any manner attributable to
-              Subcontractor. Subcontractor agrees to reimburse Builder for all sums which Builder may
-              pay or be compelled to pay in settlement of any claim hereunder. Builder shall be
-              entitled to withhold from payment otherwise due such amount as may be reasonably
-              necessary to protect it against liability arising from Subcontractor’s performance of
-              the work.
-            </p>
-
-            <h3>7. MECHANICS LIEN / CLAIMS</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              Subcontractor shall furnish all partial and final lien waivers and sworn statements for
-              itself and its material suppliers as required by Builder, as a condition precedent to
-              partial and final payments. If Builder reasonably believes that Subcontractor will or
-              has caused a claim to be made or a lien to be filed against Builder’s property, Builder
-              may withhold any and all monies due Subcontractor and, if necessary, make payment
-              jointly to Subcontractor and the claimant. Any such assertion or claim may be treated
-              by Builder as a default of the contract and Builder may take action as it deems
-              necessary to mitigate its damages and charge the cost and expense thereof to
-              Subcontractor.
-            </p>
-
-            <h3>8. CLEAN-UP</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              Subcontractor agrees to clean up all debris, trash, and refuse generated by its trade
-              at the end of each day and deposit it into the trash bin provided by Builder, and to
-              clean all walls, floors, and other finished surfaces soiled as a result of its work.
-              Subcontractor shall also deposit or haul away all boxes, crates, and containers used
-              to bring materials or fixtures to the jobsite, and leave the job broom-clean for the
-              next trade. If, after notice and opportunity to correct, Subcontractor fails to comply,
-              Builder may perform the clean-up and back charge the cost to Subcontractor.
-            </p>
-
-            <h3>9. DEFAULT</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              If Subcontractor defaults in the performance of any duties or obligations hereunder,
-              and such default continues after verbal or written notice, Builder may immediately
-              terminate this Agreement. Subcontractor shall be due only such sums for approved work
-              up until termination and shall furnish lien waivers to Builder upon termination and
-              payment.
-            </p>
-
-            <h3>10. CARE OF MATERIALS</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              Subcontractor agrees to be diligent in the proper care of materials supplied by
-              Builder. Usable materials are to be stored in an orderly way that protects them from
-              wind, moisture, and provides general site safety. Non-usable materials are to be
-              culled and properly disposed of in trash bins provided. Builder may hold Subcontractor
-              accountable for the value of materials damaged by negligent care and may back charge
-              Subcontractor for such costs. Subcontractor shall promptly notify Builder of any
-              defects in materials supplied by Builder.
-            </p>
-
-            <h3>11. PAYMENT</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              Builder shall provide stated time frames for Subcontractor to submit invoices for work
-              performed. Invoices not received by the stated time will be processed and paid in the
-              next pay period. Invoices in question will be held in their entirety until any
-              disputed charge is resolved, and payment for a disputed charge may be held from
-              Subcontractor’s total payment regardless of the specific project in dispute.
-            </p>
-
-            <h3>12. INSURANCE</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              Subcontractor shall provide Builder, at the time of signing this Agreement, with a
-              Certificate of Insurance showing the following coverage during the period of the
-              contract and shall provide evidence of such insurance when requested. Each certificate
-              shall provide for 30 days’ advance written notice of cancellation or non-renewal:
-            </p>
-            <ul style="font-size: 0.8rem; line-height: 1.5; margin-left: 1.1rem;">
-              <li>
-                <strong>A. Commercial General Liability</strong> with an insurer rated A- or better by
-                A.M. Best, with limits equal to or exceeding: $1,000,000 each occurrence (combined
-                single limit), $2,000,000 general aggregate, and $2,000,000 products/completed
-                operations aggregate. Builder is to be named as Additional Insured.
-              </li>
-              <li>
-                <strong>B. Workers’ Compensation Insurance</strong> covering all persons performing
-                work at Builder’s jobsites, including employees of Subcontractor and any
-                sub-subcontractors. A sole proprietor with one or more employees shall also provide,
-                at its own expense, a current Certificate of Workers’ Compensation Insurance.
-              </li>
-              <li>
-                <strong>C. Automobile Liability Insurance</strong> for any and all vehicles used at
-                jobsites or to transport individuals or materials to or from jobsites, with minimum
-                coverage of $500,000 each accident.
-              </li>
-            </ul>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              Subcontractor agrees to inform Builder immediately in the event of any changes in
-              coverage, including cancellation, non-renewal, or limitations on coverage.
-            </p>
-
-            <h3>HEALTH AND SAFETY</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              Subcontractor agrees to exercise all precautions necessary to prevent accidents to
-              itself, its workers, and all others. If applicable, Subcontractor shall, at its own
-              expense, supply all protective eyewear, ear protection, head protection, and other
-              required safety equipment to its workers. Subcontractor will at its own expense comply
-              with all specific health and safety requirements of the Federal Occupational Safety
-              and Health Act, Tennessee Occupational Safety and Health Act, and any other applicable
-              authority, and shall be responsible for any penalties assessed for non-compliance by
-              itself, its employees, or agents. Any hazardous materials, containers, or waste shall
-              not be left on the jobsite by Subcontractor and shall be removed and properly disposed
-              of at Subcontractor’s expense.
-            </p>
-
-            <h3>13. CONDUCT</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              Subcontractor agrees that its employees and agents shall conduct themselves in a
-              professional manner at all times. Subcontractor and its employees and agents shall not
-              use or be under the influence of alcoholic beverages or drugs on the jobsite. In the
-              event of any accident on the jobsite where Subcontractor or its employees and/or
-              agents are present, such individuals will submit to drug testing under Builder’s drug
-              policy, which is on file at Builder’s office. Subcontractor further agrees not to enter
-              into any agreement with Builder’s customer regarding the property while the house is
-              under construction and until the customer has purchased the property.
-            </p>
-
-            <h3>14. MAINTENANCE OF EROSION CONTROL</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              Subcontractor agrees that it, its employees, and all agents shall not disturb any
-              erosion control systems constructed on site on behalf of Builder. If any silt fencing
-              or hay bales are moved to gain access to the site, such structures shall be returned
-              to effective status immediately. Subcontractor shall indemnify and hold harmless
-              Builder and its agents and employees from and against all claims, fines, damages,
-              losses, and expenses (including attorney’s fees) arising out of or resulting from
-              damage to erosion control structures on the jobsite caused by Subcontractor, its
-              employees, or agents.
-            </p>
-
-            <h3>15. ARBITRATION</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              It is agreed that any dispute arising out of this Agreement or the true meaning of the
-              drawings or specifications shall be decided by binding arbitration, which shall be the
-              sole remedy for dispute resolution. Arbitration shall be by three disinterested
-              parties: one arbitrator selected by Subcontractor, one by Builder, and the third
-              selected by the two arbitrators so chosen. The decision of a majority of the
-              arbitrators shall be binding, final, and conclusive upon the parties. The expense of
-              arbitration is to be borne equally by Builder and Subcontractor.
-            </p>
-
-            <h3>16. WARRANTY</h3>
-            <p style="font-size: 0.85rem; line-height: 1.6;">
-              Subcontractor shall warrant against any defects in workmanship and/or materials
-              supplied by Subcontractor for a period of one year from the date the home is first
-              occupied by the homeowner. Subcontractor’s warranty shall be of the same standards and
-              duration as the Builder’s warranty provided to the Owner. A copy of such warranty is
-              available on request from Builder.
-            </p>
-
-            <hr style="margin: 1.25rem 0;" />
-
-            <p style="font-size: 0.9rem; line-height: 1.5;">
-              By signing below, the parties acknowledge that they have read and agree to the terms
-              of this Subcontractors Agreement.
-            </p>
-
-            <div style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 1rem; margin-top: 0.75rem;">
-              <div>
-                <label for="agreement-sub-name">Name of Subcontractor (print)</label>
-                <input
-                  type="text"
-                  id="agreement-sub-name"
-                  name="agreement_subcontractor_name"
-                  required
-                />
-
-                <div class="signature-block">
-                  <label for="agreement-signature-pad">Subcontractor Signature</label>
-                  <div class="signature-pad-container">
-                    <canvas
-                      id="agreement-signature-pad"
-                      class="signature-pad"
-                    ></canvas>
+          <!-- Detailed checklist rows -->
+          <div class="checklist">
+            <!-- W9 row -->
+            <div class="checklist-item" id="item-w9">
+              <div class="checklist-main">
+                <span class="check-icon" aria-hidden="true"></span>
+                <div class="check-text">
+                  <div class="check-title">Complete and submit W-9</div>
+                  <div class="check-caption">
+                    IRS W-9 form with your legal name, business name, tax classification,
+                    address, and taxpayer ID (SSN or EIN).
                   </div>
-                  <button
-                    type="button"
-                    class="btn-signature-clear"
-                    data-target="agreement-signature-pad"
-                  >
-                    Clear signature
-                  </button>
                 </div>
-
-                <label for="agreement-sub-title">Title</label>
-                <input
-                  type="text"
-                  id="agreement-sub-title"
-                  name="agreement_subcontractor_title"
-                />
-
-                <label for="agreement-sub-date">Date</label>
-                <input
-                  type="date"
-                  id="agreement-sub-date"
-                  name="agreement_subcontractor_date"
-                  required
-                />
               </div>
+              <div class="check-actions">
+                <a href="w9.html" class="btn secondary">
+                  Open W-9 form
+                </a>
+              </div>
+            </div>
 
-              <div>
-                <p style="font-size: 0.85rem; margin-bottom: 0.35rem;">
-                  <strong>Builder:</strong><br />
-                  Austin Bream – Anchor Homes LLC
-                </p>
-                <p style="font-size: 0.8rem; color: #4b5563; margin-top: 0;">
-                  Builder’s signature will be added by Anchor Homes LLC upon receipt.
-                </p>
-
-                <label for="agreement-initials">Subcontractor Initials</label>
-                <input
-                  type="text"
-                  id="agreement-initials"
-                  name="agreement_initials"
-                  placeholder="Initial here to acknowledge all sections"
-                />
+            <!-- Agreement row -->
+            <div class="checklist-item" id="item-agreement">
+              <div class="checklist-main">
+                <span class="check-icon" aria-hidden="true"></span>
+                <div class="check-text">
+                  <div class="check-title">Sign subcontractor agreement</div>
+                  <div class="check-caption">
+                    Anchors Homes LLC blanket subcontractor agreement outlining scope,
+                    safety, payment, and insurance requirements.
+                  </div>
+                </div>
+              </div>
+              <div class="check-actions">
+                <a href="subcontractor-agreement.html" class="btn secondary">
+                  Open Agreement
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- W-9 overlay (white card to capture) -->
-          <div class="document-card" style="margin-top: 2rem;">
-            <h2 style="margin-top: 0;">W-9 – Request for Taxpayer Identification Number</h2>
-            <p style="font-size: 0.85rem; margin-top: 0;">
-              Type directly into the fields on the W-9 below, then sign on the line. We’ll capture
-              an image of the completed form and submit it with your agreement.
-            </p>
-
-            <div id="w9-capture" class="w9-wrapper">
-              <!-- Blank W-9 image -->
-              <img src="images/w9-blank.jpg" alt="Blank IRS Form W-9" class="w9-bg" />
-
-              <!-- Name and business -->
-              <input
-                type="text"
-                name="w9_name"
-                class="w9-input w9-name"
-                placeholder="Legal Entity Name"
-                required
-              />
-              <input
-                type="text"
-                name="w9_business"
-                class="w9-input w9-business"
-                placeholder="Business name (optional)"
-              />
-
-              <!-- Entity type as checkboxes -->
-              <div class="w9-tax-class-group">
-                <label>
-                  <input type="checkbox" name="w9_tax_class_individual" />
-                  Individual / sole proprietor
-                </label>
-                <label>
-                  <input type="checkbox" name="w9_tax_class_c_corp" />
-                  C Corp
-                </label>
-                <label>
-                  <input type="checkbox" name="w9_tax_class_s_corp" />
-                  S Corp
-                </label>
-                <label>
-                  <input type="checkbox" name="w9_tax_class_partnership" />
-                  Partnership
-                </label>
-                <label>
-                  <input type="checkbox" name="w9_tax_class_trust" />
-                  Trust / estate
-                </label>
-                <label>
-                  <input type="checkbox" name="w9_tax_class_llc" />
-                  LLC
-                </label>
-                <label>
-                  <input type="checkbox" name="w9_tax_class_other" />
-                  Other
-                </label>
-              </div>
-
-              <!-- Address lines -->
-              <input
-                type="text"
-                name="w9_address"
-                class="w9-input w9-address"
-                placeholder="Address (number, street, and apt. or suite no.)"
-                required
-              />
-              <input
-                type="text"
-                name="w9_city"
-                class="w9-input w9-city"
-                placeholder="City, state, and ZIP code"
-                required
-              />
-              
-
-              <!-- SSN -->
-              <input
-                type="text"
-                name="w9_ssn_1"
-                class="w9-input w9-ssn-1"
-                maxlength="3"
-                placeholder="XXX"
-              />
-              <input
-                type="text"
-                name="w9_ssn_2"
-                class="w9-input w9-ssn-2"
-                maxlength="2"
-                placeholder="XX"
-              />
-              <input
-                type="text"
-                name="w9_ssn_3"
-                class="w9-input w9-ssn-3"
-                maxlength="4"
-                placeholder="XXXX"
-              />
-
-              <!-- EIN -->
-              <input
-                type="text"
-                name="w9_ein"
-                class="w9-input w9-ein"
-                placeholder="XX-XXXXXXX"
-              />
-
-              <!-- W-9 signature pad -->
-              <div class="w9-signature-pad">
-                <canvas id="w9-signature-pad" class="signature-pad"></canvas>
-              </div>
-
-              <!-- Date beside signature -->
-              <input
-                type="text"
-                name="w9_date"
-                class="w9-input w9-date"
-                placeholder="Date"
-                required
-              />
-            </div>
-          </div>
-
-          <!-- Submit section -->
-          <div style="margin-top: 1.75rem;">
-            <button type="submit" class="btn primary">
-              Generate documents &amp; submit to Anchor Homes
-            </button>
-            <div id="sub-status"></div>
-          </div>
-        </form>
+          <p style="margin-top: 1.5rem; font-size: 0.82rem; color: var(--color-text-muted);">
+            <strong>Note:</strong> The checkmarks shown here are based on this browser only
+            (using local storage) and the confirmation link we send you back after each
+            Formspree submission. If you switch devices or clear your browser data, you
+            may need to complete the checklist again.
+          </p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container site-footer-inner">
-      <span>&copy; <span id="year"></span> Anchor Homes LLC.</span>
+      <span>&copy; <span id="year"></span> Anchors Homes LLC.</span>
       <span>Thank you for partnering with us.</span>
     </div>
   </footer>
 
   <script src="scripts.js"></script>
-
-  <!-- html2canvas to capture Agreement + W-9 as images -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <!-- Signature Pad for drawing signatures -->
-  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
-
   <script>
+    // Year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const form = document.getElementById("sub-form");
-    const statusEl = document.getElementById("sub-status");
+    // --- Completion tracking logic ---
 
-    const agreementSigCanvas = document.getElementById("agreement-signature-pad");
-    const w9SigCanvas = document.getElementById("w9-signature-pad");
+    // Keys we use in localStorage
+    const W9_KEY = "sub_w9_completed";
+    const AGREEMENT_KEY = "sub_agreement_completed";
 
-    // Initialize signature canvases once (no resize listener, so scrolling won't clear)
-    function initSignatureCanvas(canvas) {
-      if (!canvas) return;
-      const parent = canvas.parentElement;
-      const width = parent.clientWidth || 300;
-      const height = parent.clientHeight || 80;
-      canvas.width = width;
-      canvas.height = height;
+    // Read URL params (e.g. ?w9=done&agreement=done)
+    const params = new URLSearchParams(window.location.search);
+    const w9Param = params.get("w9");
+    const agreementParam = params.get("agreement");
+
+    // If we came back from a form redirect with ?w9=done, mark it in localStorage
+    if (w9Param === "done") {
+      localStorage.setItem(W9_KEY, "true");
+    }
+    if (agreementParam === "done") {
+      localStorage.setItem(AGREEMENT_KEY, "true");
     }
 
-    initSignatureCanvas(agreementSigCanvas);
-    initSignatureCanvas(w9SigCanvas);
+    // Current state from localStorage
+    const w9Done = localStorage.getItem(W9_KEY) === "true";
+    const agreementDone = localStorage.getItem(AGREEMENT_KEY) === "true";
 
-    // Create SignaturePad instances
-    const agreementPad = new SignaturePad(agreementSigCanvas, {
-      penColor: "#000000",
-      backgroundColor: "rgba(0,0,0,0)"
-    });
+    // Helper to mark checklist UI
+    function updateChecklistItem(id, done) {
+      const item = document.getElementById(id);
+      if (!item) return;
+      const icon = item.querySelector(".check-icon");
+      const title = item.querySelector(".check-title");
 
-    const w9Pad = new SignaturePad(w9SigCanvas, {
-      penColor: "#000000",
-      backgroundColor: "rgba(0,0,0,0)"
-    });
-
-    // Clear agreement signature button
-    document.querySelectorAll(".btn-signature-clear").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const targetId = btn.getAttribute("data-target");
-        if (targetId === "agreement-signature-pad") {
-          agreementPad.clear();
-        }
-      });
-    });
-
-    // Mirror W-9 input text into overlay spans so html2canvas reliably sees it
-    function mirrorW9InputsToOverlays() {
-      const w9Wrapper = document.getElementById("w9-capture");
-      if (!w9Wrapper) return;
-
-      // Remove any previous overlays
-      w9Wrapper.querySelectorAll(".w9-text-overlay").forEach((el) => el.remove());
-
-      const inputs = w9Wrapper.querySelectorAll(".w9-input");
-      inputs.forEach((input) => {
-        const value = input.value.trim();
-        if (!value) return;
-
-        const span = document.createElement("span");
-        span.className = input.className + " w9-text-overlay"; // same positioning + overlay
-        span.textContent = value;
-        w9Wrapper.appendChild(span);
-      });
+      if (done) {
+        item.classList.add("completed");
+        if (icon) icon.textContent = "✓";
+        if (title) title.classList.add("check-title-done");
+      } else {
+        item.classList.remove("completed");
+        if (icon) icon.textContent = "";
+        if (title) title.classList.remove("check-title-done");
+      }
     }
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      statusEl.className = "";
+    function updateSummary(id, done) {
+      const pill = document.getElementById(id);
+      if (!pill) return;
+      const status = pill.querySelector(".summary-status");
+      if (!status) return;
 
-      // Require both signatures
-      if (agreementPad.isEmpty() || w9Pad.isEmpty()) {
-        statusEl.className = "error";
-        statusEl.textContent =
-          "Please sign both the subcontractor agreement and the W-9 before submitting.";
-        return;
+      if (done) {
+        pill.classList.add("completed");
+        status.textContent = "Completed";
+      } else {
+        pill.classList.remove("completed");
+        status.textContent = "Not yet completed";
       }
+    }
 
-      statusEl.textContent = "Preparing documents… please wait.";
-
-      try {
-        const agreementEl = document.getElementById("agreement-capture");
-        const w9El = document.getElementById("w9-capture");
-
-        // Ensure W-9 text is visible as normal DOM text before capture
-        mirrorW9InputsToOverlays();
-
-        // Capture both sections as images (signatures + text + checkboxes)
-        const [agreementCanvas, w9Canvas] = await Promise.all([
-          html2canvas(agreementEl, { scale: 2 }),
-          html2canvas(w9El, { scale: 2 })
-        ]);
-
-        const agreementBlob = await new Promise((resolve) =>
-          agreementCanvas.toBlob(resolve, "image/png")
-        );
-        const w9Blob = await new Promise((resolve) =>
-          w9Canvas.toBlob(resolve, "image/png")
-        );
-
-        const formData = new FormData(form); // includes all text inputs
-
-        if (agreementBlob) {
-          formData.append("agreement_file", agreementBlob, "subcontractor-agreement.png");
-        }
-        if (w9Blob) {
-          formData.append("w9_file", w9Blob, "w9-filled.png");
-        }
-
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: formData,
-          headers: { Accept: "application/json" }
-        });
-
-        if (response.ok) {
-          form.reset();
-          agreementPad.clear();
-          w9Pad.clear();
-          statusEl.className = "success";
-          statusEl.textContent =
-            "Thank you! Your subcontractor information, agreement, and W-9 have been submitted.";
-        } else {
-          statusEl.className = "error";
-          statusEl.textContent =
-            "There was a problem submitting the form. Please try again or contact us directly.";
-        }
-      } catch (err) {
-        console.error(err);
-        statusEl.className = "error";
-        statusEl.textContent =
-          "Unexpected error preparing the documents. Please refresh the page and try again.";
-      }
-    });
+    // Apply state to UI
+    updateChecklistItem("item-w9", w9Done);
+    updateChecklistItem("item-agreement", agreementDone);
+    updateSummary("summary-w9", w9Done);
+    updateSummary("summary-agreement", agreementDone);
   </script>
 </body>
 </html>
