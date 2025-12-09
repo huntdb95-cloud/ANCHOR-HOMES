@@ -6,15 +6,16 @@
   <title>Anchor Dashboard | Anchor Homes LLC</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
+    /* Keep extra styling minimal so it matches the rest of the site */
+
+    .anchor-wrapper {
+      margin: 0 auto 2.5rem;
+      max-width: 960px;
+    }
+
     .anchor-login-card,
     .anchor-dashboard {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: #ffffff;
-      border-radius: 0.75rem;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      padding: 1.75rem 1.75rem 1.5rem;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
+      color: var(--color-text, #111827);
     }
 
     .anchor-login-card h1 {
@@ -27,31 +28,14 @@
       margin-bottom: 0.75rem;
     }
 
-    .anchor-login-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 0.75rem;
+    .anchor-login-row {
       margin-top: 0.75rem;
     }
 
-    .anchor-login-label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-
-    .anchor-login-input {
-      width: 100%;
-      border-radius: 0.5rem;
-      border: 1px solid rgba(15, 23, 42, 0.25);
-      padding: 0.6rem 0.75rem;
-      font-size: 0.95rem;
-    }
-
     .anchor-login-error {
-      margin-top: 0.5rem;
       font-size: 0.85rem;
       color: #b91c1c;
+      margin-left: 0.75rem;
       display: none;
     }
 
@@ -59,6 +43,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       gap: 1.5rem;
+      margin-top: 1rem;
     }
 
     @media (min-width: 768px) {
@@ -69,7 +54,7 @@
 
     .anchor-section-card {
       border-radius: 0.75rem;
-      border: 1px solid rgba(15, 23, 42, 0.1);
+      border: 1px solid rgba(15, 23, 42, 0.08);
       padding: 1rem 1rem 0.75rem;
       background: #f9fafb;
       display: flex;
@@ -82,7 +67,7 @@
     }
 
     .anchor-section-card p {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       margin: 0;
     }
 
@@ -96,9 +81,9 @@
     .anchor-links a {
       font-size: 0.85rem;
       text-decoration: none;
-      padding: 0.4rem 0.7rem;
+      padding: 0.35rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.2);
+      border: 1px solid rgba(15, 23, 42, 0.18);
     }
 
     .anchor-iframe-wrapper {
@@ -160,30 +145,28 @@
       </div>
     </section>
 
-    <!-- Login card -->
-    <section>
-      <div class="container">
-        <div class="anchor-login-card" id="anchor-login-card">
+    <section class="section">
+      <div class="container anchor-wrapper">
+        <!-- Login card -->
+        <div class="form-card anchor-login-card" id="anchor-login-card">
           <h1>Owner login</h1>
           <p style="font-size:0.9rem;margin-top:0;">
             Enter your password to view the Anchor dashboard.
           </p>
 
           <form id="anchor-login-form">
-            <div class="anchor-login-grid">
-              <div>
-                <label class="anchor-login-label" for="anchor-password">Password</label>
-                <input
-                  id="anchor-password"
-                  type="password"
-                  class="anchor-login-input"
-                  autocomplete="off"
-                  required
-                />
-              </div>
+            <div class="anchor-login-row">
+              <label class="form-label" for="anchor-password">Password</label>
+              <input
+                id="anchor-password"
+                type="password"
+                class="form-input"
+                autocomplete="off"
+                required
+              />
             </div>
 
-            <div style="margin-top:1rem;display:flex;gap:0.5rem;align-items:center;">
+            <div style="margin-top:1rem;display:flex;align-items:center;">
               <button type="submit" class="btn primary">
                 Log in
               </button>
@@ -195,7 +178,7 @@
         </div>
 
         <!-- Dashboard (hidden until password is correct) -->
-        <div class="anchor-dashboard" id="anchor-dashboard" style="display:none;">
+        <div class="form-card anchor-dashboard" id="anchor-dashboard" style="display:none;margin-top:1.5rem;">
           <h2>Documents</h2>
           <p style="font-size:0.9rem;margin-top:0;margin-bottom:1rem;">
             Use the folders below to upload images, PDFs, Word documents, and other files.
@@ -213,7 +196,7 @@
 
               <div class="anchor-links">
                 <!-- Replace the href below with your real Google Drive folder link -->
-                <a href="https://drive.google.com/drive/folders/1mpOzYptMWAvOIL4Fc6zM0kIKTQyuaHD2?usp=drive_link"
+                <a href="https://drive.google.com/drive/folders/1mpOzYptMWAvOIL4Fc6zM0kIKTQyuaHD2?usp=sharing"
                    target="_blank" rel="noopener">
                   Open in Google Drive
                 </a>
@@ -223,7 +206,7 @@
               <div class="anchor-iframe-wrapper">
                 <!-- Replace YOUR_SUBCONTRACTOR_FOLDER_ID_HERE with the same folder ID -->
                 <iframe
-                  src="https://drive.google.com/drive/folders/1mpOzYptMWAvOIL4Fc6zM0kIKTQyuaHD2?usp=drive_link"
+                  src="https://drive.google.com/drive/folders/1mpOzYptMWAvOIL4Fc6zM0kIKTQyuaHD2?usp=sharing"
                   loading="lazy"
                 ></iframe>
               </div>
@@ -238,7 +221,7 @@
 
               <div class="anchor-links">
                 <!-- Replace the href below with your real Google Drive folder link -->
-                <a href="https://drive.google.com/drive/folders/1L_LBbcQ9kzGcABzyaAZJGg0GhBJjTNjW?usp=drive_link"
+                <a href="https://drive.google.com/drive/folders/1L_LBbcQ9kzGcABzyaAZJGg0GhBJjTNjW?usp=sharing"
                    target="_blank" rel="noopener">
                   Open in Google Drive
                 </a>
@@ -248,7 +231,7 @@
               <div class="anchor-iframe-wrapper">
                 <!-- Replace YOUR_PROJECT_FOLDER_ID_HERE with the same folder ID -->
                 <iframe
-                  src="https://drive.google.com/drive/folders/1L_LBbcQ9kzGcABzyaAZJGg0GhBJjTNjW?usp=drive_link"
+                  src="https://drive.google.com/drive/folders/1L_LBbcQ9kzGcABzyaAZJGg0GhBJjTNjW?usp=sharing"
                   loading="lazy"
                 ></iframe>
               </div>
@@ -294,6 +277,7 @@
         loginCard.style.display = "none";
         dashboard.style.display = "block";
         passwordInput.value = "";
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         loginError.style.display = "inline";
       }
