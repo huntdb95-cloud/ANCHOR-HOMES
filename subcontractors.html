@@ -239,12 +239,38 @@
                 class="w9-input w9-business"
                 placeholder="Business name / disregarded entity (optional)"
               />
-              <input
-                type="text"
-                name="w9_tax_class"
-                class="w9-input w9-tax-class"
-                placeholder="Federal tax classification (e.g., Individual / sole proprietor)"
-              />
+                <!-- Entity type (federal tax classification) as checkboxes -->
+  <div class="w9-tax-class-group">
+    <label>
+      <input type="checkbox" name="w9_tax_class_individual" />
+      Individual / sole proprietor
+    </label>
+    <label>
+      <input type="checkbox" name="w9_tax_class_c_corp" />
+      C Corp
+    </label>
+    <label>
+      <input type="checkbox" name="w9_tax_class_s_corp" />
+      S Corp
+    </label>
+    <label>
+      <input type="checkbox" name="w9_tax_class_partnership" />
+      Partnership
+    </label>
+    <label>
+      <input type="checkbox" name="w9_tax_class_trust" />
+      Trust / estate
+    </label>
+    <label>
+      <input type="checkbox" name="w9_tax_class_llc" />
+      LLC
+    </label>
+    <label>
+      <input type="checkbox" name="w9_tax_class_other" />
+      Other
+    </label>
+  </div>
+
               <input
                 type="text"
                 name="w9_address"
