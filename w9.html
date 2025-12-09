@@ -1,1 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>W-9 Form | Anchors Homes LLC</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Anchors Homes LLC logo" class="brand-logo" />
+        <span class="brand-text">
+          <span class="brand-name">Anchors Homes LLC</span>
+          <span class="brand-tagline">Custom Homes &amp; Remodeling</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="subcontractors.html">Subcontractors</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>W-9 – Taxpayer Identification</h1>
+        <p>
+          Please complete this W-9 so we can keep your taxpayer information on
+          file. When you submit, we’ll generate an image of the completed form
+          and send it to Anchors Homes LLC via Formspree.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <form
+          id="w9-form"
+          action="https://formspree.io/f/xdkqdpgd"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="form-card">
+            <h2 style="margin-top:0;margin-bottom:0.75rem;">Basic contact info</h2>
+            <div class="form-grid">
+              <div>
+                <label class="form-label" for="contact-name">Contact Name</label>
+                <input
+                  id="contact-name"
+                  name="contact_name"
+                  class="form-input"
+                  required
+                />
+              </div>
+              <div>
+                <label class="form-label" for="contact-email">Email</label>
+                <input
+                  id="contact-email"
+                  name="contact_email"
+                  type="email"
+                  class="form-input"
+                  required
+                />
+              </div>
+              <div>
+                <label class="form-label" for="contact-phone">Phone</label>
+                <input
+                  id="contact-phone"
+                  name="contact_phone"
+                  type="tel"
+                  class="form-input"
+                />
+              </div>
+              <div class="form-row-full">
+                <label class="form-label" for="contact-notes">Notes (optional)</label>
+                <textarea
+                  id="contact-notes"
+                  name="contact_notes"
+                  class="form-textarea"
+                  placeholder="Anything else we should know."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="document-card" style="margin-top:1.75rem;">
+            <h2 style="margin-top:0;">W-9 details</h2>
+            <p style="font-size:0.85rem;margin-top:0;">
+              Fill in the boxes on the W-9 below and sign in the signature area.
+              We’ll capture an image of this completed form as part of your submission.
+            </p>
+
+            <!-- W-9 capture area -->
+            <div id="w9-capture" class="w9-wrapper">
+              <!-- Blank W-9 image -->
+              <!-- Make sure this path/filename matches your repo -->
+              <img
+                src="images/w9-blank.jpg"
+                alt="Blank IRS Form W-9"
+                class="w9-bg"
+                style="width:100%;height:100%;object-fit:contain;"
+              />
+
+              <!-- Overlay inputs on top of W-9 -->
+              <input
+                type="text"
+                name="w9_name"
+                class="w9-input w9-name"
+                placeholder="Name (as shown on tax return)"
+                required
+              />
+              <input
+                type="text"
+                name="w9_business"
+                class="w9-input w9-business"
+                placeholder="Business name/disregarded entity name"
+              />
+
+              <div class="w9-tax-class-group">
+                <span class="w9-tax-label">Federal tax classification:</span>
+                <label>
+                  <input type="checkbox" name="w9_tax_individual" />
+                  Individual / sole proprietor
+                </label>
+                <label>
+                  <input type="checkbox" name="w9_tax_c_corp" />
+                  C Corp
+                </label>
+                <label>
+                  <input type="checkbox" name="w9_tax_s_corp" />
+                  S Corp
+                </label>
+                <label>
+                  <input type="checkbox" name="w9_tax_partnership" />
+                  Partnership
+                </label>
+                <label>
+                  <input type="checkbox" name="w9_tax_trust" />
+                  Trust / estate
+                </label>
+                <label>
+                  <input type="checkbox" name="w9_tax_llc" />
+                  LLC
+                </label>
+                <label>
+                  <input type="checkbox" name="w9_tax_other" />
+                  Other
+                </label>
+              </div>
+
+              <input
+                type="text"
+                name="w9_address"
+                class="w9-input w9-address"
+                placeholder="Address (number, street, and apt. or suite no.)"
+                required
+              />
+              <input
+                type="text"
+                name="w9_city"
+                class="w9-input w9-city"
+                placeholder="City, state, and ZIP code"
+                required
+              />
+
+              <!-- SSN -->
+              <input
+                type="text"
+                name="w9_ssn_1"
+                class="w9-input w9-ssn-1"
+                maxlength="3"
+                placeholder="XXX"
+              />
+              <input
+                type="text"
+                name="w9_ssn_2"
+                class="w9-input w9-ssn-2"
+                maxlength="2"
+                placeholder="XX"
+              />
+              <input
+                type="text"
+                name="w9_ssn_3"
+                class="w9-input w9-ssn-3"
+                maxlength="4"
+                placeholder="XXXX"
+              />
+
+              <!-- EIN -->
+              <input
+                type="text"
+                name="w9_ein"
+                class="w9-input w9-ein"
+                placeholder="XX-XXXXXXX"
+              />
+
+              <!-- Signature pad area on W-9 -->
+              <div class="w9-signature-pad">
+                <canvas id="w9-signature-pad" class="signature-pad"></canvas>
+              </div>
+
+              <input
+                type="text"
+                name="w9_date"
+                class="w9-input w9-date"
+                placeholder="Date"
+                required
+              />
+            </div>
+
+            <div style="margin-top:1rem;text-align:right;">
+              <button
+                type="button"
+                class="btn secondary"
+                id="btn-clear-w9-signature"
+              >
+                Clear signature
+              </button>
+            </div>
+          </div>
+
+          <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.4rem;">
+            <button type="submit" class="btn primary">
+              Submit W-9 to Anchors Homes
+            </button>
+            <div id="w9-status" style="font-size:0.84rem;"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <span>&copy; <span id="year"></span> Anchors Homes LLC.</span>
+      <span>Thank you for partnering with us.</span>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <!-- Signature pad + html2canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const W9_KEY = "sub_w9_completed";
+
+    const form = document.getElementById("w9-form");
+    const statusEl = document.getElementById("w9-status");
+
+    const w9SigCanvas = document.getElementById("w9-signature-pad");
+
+    function initSignatureCanvas(canvas) {
+      if (!canvas) return;
+      const parent = canvas.parentElement;
+      const width = parent.clientWidth || 300;
+      const height = parent.clientHeight || 80;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    initSignatureCanvas(w9SigCanvas);
+
+    const w9Pad = new SignaturePad(w9SigCanvas, {
+      penColor: "#000000",
+      backgroundColor: "rgba(0,0,0,0)"
+    });
+
+    document
+      .getElementById("btn-clear-w9-signature")
+      .addEventListener("click", () => w9Pad.clear());
+
+    // Optional helper: copy text from inputs into overlay spans so html2canvas for sure sees it
+    function mirrorW9InputsToOverlays() {
+      const w9Wrapper = document.getElementById("w9-capture");
+      if (!w9Wrapper) return;
+
+      // Remove any previous overlay text
+      w9Wrapper.querySelectorAll(".w9-text-overlay").forEach((el) => el.remove());
+
+      const inputs = w9Wrapper.querySelectorAll(".w9-input");
+      inputs.forEach((input) => {
+        const value = input.value.trim();
+        if (!value) return;
+
+        const span = document.createElement("span");
+        span.className = input.className + " w9-text-overlay";
+        span.textContent = value;
+        w9Wrapper.appendChild(span);
+      });
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.className = "";
+      statusEl.textContent = "Preparing W-9… please wait.";
+
+      if (w9Pad.isEmpty()) {
+        statusEl.className = "error";
+        statusEl.textContent = "Please sign the W-9 before submitting.";
+        return;
+      }
+
+      const w9El = document.getElementById("w9-capture");
+      const originalWidth = w9El.style.width;
+      const originalHeight = w9El.style.height;
+
+      try {
+        // Make capture area 8.5x11 in for readable output
+        w9El.style.width = "8.5in";
+        w9El.style.height = "11in";
+
+        mirrorW9InputsToOverlays();
+
+        const w9Canvas = await html2canvas(w9El, { scale: 2 });
+        const w9Blob = await new Promise((resolve) =>
+          w9Canvas.toBlob(resolve, "image/png")
+        );
+
+        const sigBlob = await new Promise((resolve) =>
+          w9SigCanvas.toBlob(resolve, "image/png")
+        );
+
+        const formData = new FormData(form);
+        if (w9Blob) {
+          formData.append("w9_file", w9Blob, "w9-filled.png");
+        }
+        if (sigBlob) {
+          formData.append("w9_signature_file", sigBlob, "w9-signature.png");
+        }
+
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" }
+        });
+
+        if (response.ok) {
+          // mark as completed and go back to landing
+          localStorage.setItem(W9_KEY, "true");
+          window.location.href = "subcontractors.html?w9=done";
+        } else {
+          statusEl.className = "error";
+          statusEl.textContent =
+            "There was a problem submitting your W-9. Please try again.";
+        }
+      } catch (err) {
+        console.error(err);
+        statusEl.className = "error";
+        statusEl.textContent =
+          "Unexpected error preparing the W-9. Please refresh and try again.";
+      } finally {
+        // restore original size
+        w9El.style.width = originalWidth;
+        w9El.style.height = originalHeight;
+      }
+    });
+  </script>
+</body>
+</html>
 
