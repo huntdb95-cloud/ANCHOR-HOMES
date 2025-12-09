@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anchor Dashboard | Anchor Homes LLC</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .anchor-login-card,
+    .anchor-dashboard {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #ffffff;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      padding: 1.75rem 1.75rem 1.5rem;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
+    }
+
+    .anchor-login-card h1 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .anchor-dashboard h2 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+
+    .anchor-login-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .anchor-login-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .anchor-login-input {
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(15, 23, 42, 0.25);
+      padding: 0.6rem 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .anchor-login-error {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #b91c1c;
+      display: none;
+    }
+
+    .anchor-section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .anchor-section-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .anchor-section-card {
+      border-radius: 0.75rem;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      padding: 1rem 1rem 0.75rem;
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .anchor-section-card h3 {
+      margin: 0;
+    }
+
+    .anchor-section-card p {
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    .anchor-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .anchor-links a {
+      font-size: 0.85rem;
+      text-decoration: none;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.2);
+    }
+
+    .anchor-iframe-wrapper {
+      margin-top: 0.75rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: #ffffff;
+    }
+
+    .anchor-iframe-wrapper iframe {
+      display: block;
+      width: 100%;
+      min-height: 320px;
+      border: 0;
+    }
+
+    .anchor-note {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Anchor Homes LLC logo" class="brand-logo" />
+        <span class="brand-text">
+          <span class="brand-name">Anchor Homes LLC</span>
+          <span class="brand-tagline">Custom Homes &amp; Remodeling</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="subcontractors.html">Subcontractors</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="anchor.html">Anchor</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Anchor Owner Dashboard</h1>
+        <p>
+          Private area for managing subcontractor and project documents. This section
+          is intended for the owner of Anchor Homes LLC.
+        </p>
+      </div>
+    </section>
+
+    <!-- Login card -->
+    <section>
+      <div class="container">
+        <div class="anchor-login-card" id="anchor-login-card">
+          <h1>Owner login</h1>
+          <p style="font-size:0.9rem;margin-top:0;">
+            Enter your password to view the Anchor dashboard.
+          </p>
+
+          <form id="anchor-login-form">
+            <div class="anchor-login-grid">
+              <div>
+                <label class="anchor-login-label" for="anchor-password">Password</label>
+                <input
+                  id="anchor-password"
+                  type="password"
+                  class="anchor-login-input"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+            </div>
+
+            <div style="margin-top:1rem;display:flex;gap:0.5rem;align-items:center;">
+              <button type="submit" class="btn primary">
+                Log in
+              </button>
+              <span class="anchor-login-error" id="anchor-login-error">
+                Incorrect password. Please try again.
+              </span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Dashboard (hidden until password is correct) -->
+        <div class="anchor-dashboard" id="anchor-dashboard" style="display:none;">
+          <h2>Documents</h2>
+          <p style="font-size:0.9rem;margin-top:0;margin-bottom:1rem;">
+            Use the folders below to upload images, PDFs, Word documents, and other files.
+            You can rename, organize, and label them directly in Google Drive.
+          </p>
+
+          <div class="anchor-section-grid">
+            <!-- Subcontractor Documents -->
+            <div class="anchor-section-card">
+              <h3>Subcontractor Documents</h3>
+              <p>
+                Store W-9s, subcontractor agreements, insurance certificates, and any
+                trade-specific documentation.
+              </p>
+
+              <div class="anchor-links">
+                <!-- Replace the href below with your real Google Drive folder link -->
+                <a href="https://drive.google.com/drive/folders/YOUR_SUBCONTRACTOR_FOLDER_ID_HERE"
+                   target="_blank" rel="noopener">
+                  Open in Google Drive
+                </a>
+              </div>
+
+              <!-- Optional embedded folder view -->
+              <div class="anchor-iframe-wrapper">
+                <!-- Replace YOUR_SUBCONTRACTOR_FOLDER_ID_HERE with the same folder ID -->
+                <iframe
+                  src="https://drive.google.com/embeddedfolderview?id=YOUR_SUBCONTRACTOR_FOLDER_ID_HERE#grid"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+
+            <!-- Project Documents -->
+            <div class="anchor-section-card">
+              <h3>Project Documents</h3>
+              <p>
+                Keep plans, permits, photos, and progress documents organized by job.
+              </p>
+
+              <div class="anchor-links">
+                <!-- Replace the href below with your real Google Drive folder link -->
+                <a href="https://drive.google.com/drive/folders/YOUR_PROJECT_FOLDER_ID_HERE"
+                   target="_blank" rel="noopener">
+                  Open in Google Drive
+                </a>
+              </div>
+
+              <!-- Optional embedded folder view -->
+              <div class="anchor-iframe-wrapper">
+                <!-- Replace YOUR_PROJECT_FOLDER_ID_HERE with the same folder ID -->
+                <iframe
+                  src="https://drive.google.com/embeddedfolderview?id=YOUR_PROJECT_FOLDER_ID_HERE#grid"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          <p class="anchor-note">
+            Note: This login is a simple page-level password for convenience. For real
+            security, access to these folders is controlled by your Google account and
+            Google Drive sharing settings.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <span>&copy; <span id="year"></span> Anchor Homes LLC.</span>
+      <span>Private owner area.</span>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Simple front-end password gate
+    const OWNER_PASSWORD = "Breamteam#25"; // <- Your chosen password
+
+    const loginForm = document.getElementById("anchor-login-form");
+    const passwordInput = document.getElementById("anchor-password");
+    const loginError = document.getElementById("anchor-login-error");
+    const loginCard = document.getElementById("anchor-login-card");
+    const dashboard = document.getElementById("anchor-dashboard");
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const val = passwordInput.value || "";
+
+      if (val === OWNER_PASSWORD) {
+        loginError.style.display = "none";
+        loginCard.style.display = "none";
+        dashboard.style.display = "block";
+        passwordInput.value = "";
+      } else {
+        loginError.style.display = "inline";
+      }
+    });
+  </script>
+</body>
+</html>
