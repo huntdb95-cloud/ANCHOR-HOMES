@@ -502,17 +502,15 @@
             </div>
 
             <p class="anchor-note">
-              Note: COI reminders are stored in your browser only (using local
-              storage). If you clear your browser data or switch devices, you’ll need
-              to re-enter this list.
+              COI reminders are stored in Firebase so you can view this tracker on
+              any device using this dashboard (subject to your Firestore security rules).
             </p>
           </div>
 
           <p class="anchor-note">
             This login is a simple page-level password for convenience. Real security
-            for your files and COI documents is handled by Box and your storage
-            providers — only accounts you grant access to will be able to view or
-            modify your documents.
+            for your files and COI documents is handled by Box and Firebase — use
+            Firestore security rules to restrict who can read or write this data.
           </p>
         </div>
       </div>
@@ -527,11 +525,13 @@
   </footer>
 
   <script src="scripts.js"></script>
+
+  <!-- Non-module script: just year + login -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Simple front-end password gate
-    const OWNER_PASSWORD = "Breamteam#25"; // <- Your chosen password
+    const OWNER_PASSWORD = "Breamteam#25";
 
     const loginForm = document.getElementById("anchor-login-form");
     const passwordInput = document.getElementById("anchor-password");
@@ -553,13 +553,40 @@
         loginError.style.display = "inline";
       }
     });
+  </script>
 
-    // ---------------------------
-    // Subcontractor COI Tracker
-    // ---------------------------
+  <!-- Firebase + COI tracker (module) -->
+  <script type="module">
+    // Import Firebase SDKs (v12.6.0)
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+      setDoc,
+      doc,
+      deleteDoc
+    } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-    const COI_KEY = "anchor_coi_tracker_v2"; // new key since structure changed
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDZmiuGCuqufL_yF2EHwLKWNlPCzIhr2TU",
+      authDomain: "tracker-5d621.firebaseapp.com",
+      projectId: "tracker-5d621",
+      storageBucket: "tracker-5d621.firebasestorage.app",
+      messagingSenderId: "950779208174",
+      appId: "1:950779208174:web:ce37c7167ea0e125b0eeff",
+      measurementId: "G-GX3M1SWVD2"
+    };
 
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+    const coiCollection = collection(db, "coiRecords");
+
+    // --------- DOM references ----------
     const coiForm = document.getElementById("coi-form");
     const coiNameInput = document.getElementById("coi-name");
     const coiWcInput = document.getElementById("coi-wc-date");
@@ -572,30 +599,65 @@
     const coiFilterButtons = document.querySelectorAll(".coi-filter-btn");
     let currentFilter = "all";
 
-    function loadCoiList() {
+    // --------- Firestore helpers ----------
+    async function loadCoiList() {
       try {
-        const raw = localStorage.getItem(COI_KEY);
-        if (!raw) return [];
-        const parsed = JSON.parse(raw);
-        return Array.isArray(parsed) ? parsed : [];
+        const snapshot = await getDocs(coiCollection);
+        const list = [];
+        snapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          list.push({
+            id: docSnap.id,
+            name: data.name || "",
+            wcDate: data.wcDate || "",
+            glDate: data.glDate || ""
+          });
+        });
+        return list;
       } catch (e) {
-        console.error("Error loading COI list:", e);
+        console.error("Error loading COI data from Firebase:", e);
+        alert("There was an error loading COI data from Firebase.");
         return [];
       }
     }
 
-    function saveCoiList(list) {
+    async function saveCoiRecord(name, wcDate, glDate) {
       try {
-        localStorage.setItem(COI_KEY, JSON.stringify(list));
+        // Simple id based on subcontractor name
+        const id = name.trim().toLowerCase().replace(/[^a-z0-9]+/g, "_");
+        await setDoc(doc(db, "coiRecords", id), {
+          name,
+          wcDate: wcDate || "",
+          glDate: glDate || ""
+        });
       } catch (e) {
-        console.error("Error saving COI list:", e);
+        console.error("Error saving COI record:", e);
+        alert("There was an error saving this COI record to Firebase.");
       }
     }
 
+    async function deleteCoiRecord(id) {
+      try {
+        await deleteDoc(doc(db, "coiRecords", id));
+      } catch (e) {
+        console.error("Error deleting COI record:", e);
+        alert("There was an error deleting this COI record from Firebase.");
+      }
+    }
+
+    // --------- Date + status helpers ----------
     function daysBetween(today, target) {
       const oneDay = 24 * 60 * 60 * 1000;
-      const start = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
-      const end = new Date(target.getFullYear(), target.getMonth(), target.getDate()).getTime();
+      const start = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate()
+      ).getTime();
+      const end = new Date(
+        target.getFullYear(),
+        target.getMonth(),
+        target.getDate()
+      ).getTime();
       return Math.round((end - start) / oneDay);
     }
 
@@ -653,8 +715,9 @@
       }
     }
 
-    function renderCoiList() {
-      const list = loadCoiList();
+    // --------- Render + filter ----------
+    async function renderCoiList() {
+      const list = await loadCoiList();
       coiTableBody.innerHTML = "";
       coiAlertList.innerHTML = "";
 
@@ -670,20 +733,18 @@
       list
         .slice()
         .sort((a, b) => {
-          // sort by earliest of WC/GL date for convenience
           const aDate = a.wcDate || a.glDate || "";
           const bDate = b.wcDate || b.glDate || "";
           return new Date(aDate) - new Date(bDate);
         })
-        .forEach((item, index) => {
+        .forEach((item) => {
           const tr = document.createElement("tr");
+          tr.dataset.id = item.id;
 
           const wcStatus = computeStatus(item.wcDate, today);
           const glStatus = computeStatus(item.glDate, today);
 
-          // Determine row highlight & overall status for filtering
-          let rowStatus = "ok"; // default
-
+          let rowStatus = "ok";
           if (wcStatus.rowFlag === "expired" || glStatus.rowFlag === "expired") {
             tr.classList.add("coi-row-expired");
             rowStatus = "expired";
@@ -693,7 +754,6 @@
           } else {
             rowStatus = "ok";
           }
-
           tr.dataset.status = rowStatus;
 
           // Name
@@ -745,18 +805,17 @@
           delBtn.type = "button";
           delBtn.className = "coi-delete-btn";
           delBtn.textContent = "Remove";
-          delBtn.addEventListener("click", () => {
-            const current = loadCoiList();
-            current.splice(index, 1);
-            saveCoiList(current);
-            renderCoiList();
+          delBtn.addEventListener("click", async () => {
+            const id = tr.dataset.id;
+            await deleteCoiRecord(id);
+            await renderCoiList();
           });
           actionsTd.appendChild(delBtn);
           tr.appendChild(actionsTd);
 
           coiTableBody.appendChild(tr);
 
-          // Alert chips for WC / GL due within 30 days
+          // Alert chips for due WC / GL
           if (wcStatus.rowFlag === "due" && wcStatus.diff !== null && !isNaN(wcStatus.diff)) {
             anyDueSoon = true;
             const chip = document.createElement("div");
@@ -785,8 +844,6 @@
         });
 
       coiAlertBar.style.display = anyDueSoon ? "block" : "none";
-
-      // Apply current filter to freshly rendered rows
       applyCoiFilter(currentFilter);
     }
 
@@ -808,7 +865,6 @@
         }
       });
 
-      // Update active button styling
       coiFilterButtons.forEach((btn) => {
         if (btn.dataset.filter === mode) {
           btn.classList.add("active");
@@ -825,7 +881,7 @@
       });
     });
 
-    coiForm.addEventListener("submit", function (e) {
+    coiForm.addEventListener("submit", async function (e) {
       e.preventDefault();
       const name = coiNameInput.value.trim();
       const wcDate = coiWcInput.value;
@@ -838,34 +894,17 @@
         return;
       }
 
-      const list = loadCoiList();
-      const existingIndex = list.findIndex(
-        (item) => item.name.toLowerCase() === name.toLowerCase()
-      );
-
-      if (existingIndex >= 0) {
-        const current = list[existingIndex];
-        // Only overwrite a date if a new one was provided
-        if (wcDate) current.wcDate = wcDate;
-        if (glDate) current.glDate = glDate;
-        list[existingIndex] = current;
-      } else {
-        list.push({
-          name,
-          wcDate: wcDate || "",
-          glDate: glDate || ""
-        });
-      }
-
-      saveCoiList(list);
-      renderCoiList();
+      await saveCoiRecord(name, wcDate, glDate);
+      await renderCoiList();
 
       coiNameInput.value = "";
       coiWcInput.value = "";
       coiGlInput.value = "";
     });
 
-    document.addEventListener("DOMContentLoaded", renderCoiList);
+    document.addEventListener("DOMContentLoaded", () => {
+      renderCoiList();
+    });
   </script>
 </body>
 </html>
