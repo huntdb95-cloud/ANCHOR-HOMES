@@ -721,16 +721,17 @@ main {
 /* Generic overlay field styled to look like handwriting/typed text */
 .w9-input {
   position: absolute;
-  font-size: 9px;                  /* smaller text so it fits inside lines */
-  line-height: 1.1;                /* keeps text height compact */
-  height: 1.1em;                   /* prevents clipping when captured */
-  padding: 0;                      /* no extra vertical padding */
+  font-size: 8px;                    /* smaller so it fits comfortably */
+  line-height: 1.25;                 /* extra breathing room */
+  padding: 0;                        /* no extra vertical padding */
   margin: 0;
-  border: none;                    /* let the printed form’s line show */
+  border: none;                      /* let the W-9’s printed line show */
   background: transparent;
   color: #000000;
   font-family: "Helvetica", Arial, sans-serif;
+  /* no explicit height here – let the text define it so html2canvas doesn’t crop */
 }
+
 
 /* Specific W-9 field placements (percent-based, you can tweak later) */
 .w9-name {
