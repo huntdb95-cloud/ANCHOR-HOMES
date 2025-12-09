@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Anchors Homes LLC</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Anchors Homes LLC logo" class="brand-logo" />
+        <span class="brand-text">
+          <span class="brand-name">Anchors Homes LLC</span>
+          <span class="brand-tagline">Custom Homes &amp; Remodeling</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="subcontractors.html">Subcontractors</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>About Anchors Homes LLC</h1>
+        <p>
+          A construction company grounded in experience, straight talk, and
+          doing right by homeowners.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-grid">
+        <div class="about-highlight">
+          <h2>Meet the Owner – Austin Bream</h2>
+          <p>
+            Anchors Homes LLC is led by <strong>Austin Bream</strong>, a
+            Pennsylvania native with a decade of hands-on construction
+            experience. Austin spent over ten years working in the field,
+            learning the trades, understanding jobsite realities, and seeing
+            firsthand what makes a project run smoothly—or fall behind.
+          </p>
+          <p>
+            Before launching Anchors Homes LLC, Austin served for five years as
+            head of construction for a large home builder. In that role he
+            oversaw scheduling, quality control, trade coordination, and
+            customer walk-throughs across a wide mix of projects. That
+            experience built a deep understanding of how to deliver consistent
+            craftsmanship while keeping budgets and timelines in check.
+          </p>
+          <p>
+            Today, Anchors Homes LLC focuses on a simple foundation:
+            <strong>integrity, clear communication, and taking care of the
+            customer</strong>. That means accurate expectations up front,
+            honest conversations when decisions need to be made, and a steady
+            focus on the details that make a home feel solid for years to come.
+          </p>
+        </div>
+
+        <aside class="about-meta">
+          <h3 style="margin-top: 0;">How we work</h3>
+          <ul style="padding-left: 1.1rem; margin-top: 0.5rem;">
+            <li>Transparent budgeting and scope discussions.</li>
+            <li>Regular check-ins and walk-throughs with homeowners.</li>
+            <li>Trusted subcontractors held to clear quality standards.</li>
+            <li>Job sites kept organized and respectful of your property.</li>
+          </ul>
+
+          <h3 style="margin-top: 1.5rem;">What you can expect</h3>
+          <ul style="padding-left: 1.1rem; margin-top: 0.5rem;">
+            <li>Real timelines and realistic options, not overselling.</li>
+            <li>Attention to the structure you can’t see, not just the finishes.</li>
+            <li>Responsiveness when questions come up during and after the job.</li>
+          </ul>
+
+          <p style="margin-top: 1.5rem;">
+            Whether you’re planning a new build or a significant renovation,
+            Anchors Homes LLC approaches your project with the mindset that
+            it should feel good not just on the day you move in, but ten years later.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <span>&copy; <span id="year"></span> Anchors Homes LLC.</span>
+      <span>Led by experience. Guided by integrity.</span>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
