@@ -32,92 +32,242 @@
   <main>
     <section class="page-header">
       <div class="container">
-        <h1>Subcontractor Partners</h1>
-        <p>
-          Anchors Homes LLC works with reliable trades who share our focus on
-          quality, safety, and clear communication. If you’re interested in
-          partnering on future projects, tell us a bit about your company below.
+        <h1>Subcontractor Agreement &amp; W-9</h1>
+        <p class="sub-page-intro">
+          Use this page to submit your signed subcontractor agreement and W-9
+          directly to Anchors Homes LLC. You can type onto the fields below,
+          sign, and we’ll receive copies of the agreement and the W-9 form as
+          image attachments via Formspree.
         </p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="form-card">
-          <!-- When you're ready, we can customize these fields and connect this to Formspree or another system -->
-          <form>
+        <!-- Entire flow is one form -->
+        <form
+          id="sub-form"
+          action="https://formspree.io/f/xdkqdpgd"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <!-- Basic info (dark card) -->
+          <div class="form-card">
+            <h2 style="margin-top: 0; margin-bottom: 0.75rem;">Basic subcontractor information</h2>
             <div class="form-grid">
               <div>
-                <label class="form-label" for="sub-name">Company / Individual Name</label>
-                <input class="form-input" type="text" id="sub-name" required />
+                <label class="form-label" for="company-name">Company / Individual Name</label>
+                <input class="form-input" type="text" id="company-name" name="company_name" required />
               </div>
               <div>
-                <label class="form-label" for="sub-trade">Primary Trade</label>
-                <input class="form-input" type="text" id="sub-trade" placeholder="Framing, electrical, plumbing, etc." />
-              </div>
-
-              <div>
-                <label class="form-label" for="sub-contact-name">Contact Person</label>
-                <input class="form-input" type="text" id="sub-contact-name" />
-              </div>
-              <div>
-                <label class="form-label" for="sub-phone">Phone</label>
-                <input class="form-input" type="tel" id="sub-phone" />
+                <label class="form-label" for="trade">Primary Trade</label>
+                <input class="form-input" type="text" id="trade" name="trade" placeholder="Framing, electrical, plumbing, etc." />
               </div>
 
               <div>
-                <label class="form-label" for="sub-email">Email</label>
-                <input class="form-input" type="email" id="sub-email" />
+                <label class="form-label" for="contact-name">Contact Person</label>
+                <input class="form-input" type="text" id="contact-name" name="contact_name" />
               </div>
               <div>
-                <label class="form-label" for="sub-location">Typical Work Area</label>
-                <input class="form-input" type="text" id="sub-location" placeholder="Cities / counties you serve" />
+                <label class="form-label" for="contact-phone">Phone</label>
+                <input class="form-input" type="tel" id="contact-phone" name="contact_phone" />
+              </div>
+
+              <div>
+                <label class="form-label" for="contact-email">Email</label>
+                <input class="form-input" type="email" id="contact-email" name="contact_email" required />
+              </div>
+              <div>
+                <label class="form-label" for="work-area">Typical Work Area</label>
+                <input class="form-input" type="text" id="work-area" name="work_area" placeholder="Cities / counties you serve" />
               </div>
 
               <div class="form-row-full">
-                <label class="form-label" for="sub-experience">
+                <label class="form-label" for="experience">
                   Brief Description of Experience
                 </label>
-                <textarea id="sub-experience" class="form-textarea" placeholder="Years in business, types of projects, builder references, etc."></textarea>
-              </div>
-
-              <div>
-                <label class="form-label" for="sub-insurance">General Liability Coverage</label>
-                <select id="sub-insurance" class="form-select">
-                  <option value="">Select an option</option>
-                  <option>Active GL policy in place</option>
-                  <option>Currently applying / updating</option>
-                  <option>No coverage</option>
-                </select>
-              </div>
-              <div>
-                <label class="form-label" for="sub-workers-comp">Workers' Comp</label>
-                <select id="sub-workers-comp" class="form-select">
-                  <option value="">Select an option</option>
-                  <option>Policy in place</option>
-                  <option>Exempt (owner-only)</option>
-                  <option>No coverage</option>
-                </select>
-              </div>
-
-              <div class="form-row-full">
-                <label class="form-label" for="sub-notes">
-                  Additional Notes (scheduling, crew size, specialties)
-                </label>
-                <textarea id="sub-notes" class="form-textarea"></textarea>
+                <textarea
+                  id="experience"
+                  name="experience"
+                  class="form-textarea"
+                  placeholder="Years in business, types of projects, builder references, etc."
+                ></textarea>
               </div>
             </div>
+          </div>
 
-            <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <button type="submit" class="btn primary">Submit Interest</button>
-            </div>
-
-            <p style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--color-text-muted);">
-              Note: This form is for initial screening only and does not guarantee work.
-              We’ll reach out if there’s a good fit for upcoming projects.
+          <!-- Subcontractor Agreement (white card to capture) -->
+          <div id="agreement-capture" class="document-card agreement-card">
+            <h2 style="margin-top: 0;">Subcontractor Agreement</h2>
+            <p style="font-size: 0.85rem; margin-top: 0;">
+              This is a simplified subcontractor agreement for Anchors Homes LLC. A
+              signed copy will be captured as an image and sent to us with your W-9.
             </p>
-          </form>
-        </div>
+
+            <p style="font-size: 0.9rem; line-height: 1.5;">
+              This Subcontractor Agreement (<strong>"Agreement"</strong>) is made between
+              <strong>Anchors Homes LLC</strong> (<strong>"Contractor"</strong>) and the
+              subcontractor named below (<strong>"Subcontractor"</strong>).
+            </p>
+
+            <label for="agreement-sub-name">Subcontractor legal name</label>
+            <input type="text" id="agreement-sub-name" name="agreement_sub_name" required />
+
+            <label for="agreement-scope">Scope of work</label>
+            <textarea
+              id="agreement-scope"
+              name="agreement_scope"
+              placeholder="Example: framing and sheathing for residential projects as directed by Contractor."
+            ></textarea>
+
+            <label for="agreement-comp">Compensation (rate / terms)</label>
+            <textarea
+              id="agreement-comp"
+              name="agreement_comp"
+              placeholder="Example: Paid per agreed bid or time-and-materials; invoices due net 30 days after approval."
+            ></textarea>
+
+            <p style="font-size: 0.85rem; line-height: 1.6;">
+              Subcontractor agrees to perform work in a workmanlike manner, comply with all
+              applicable safety and building codes, maintain required licenses and insurance,
+              and follow Contractor's jobsite rules. Subcontractor is an independent contractor
+              and is solely responsible for its employees, taxes, insurance, and equipment.
+            </p>
+
+            <p style="font-size: 0.85rem; line-height: 1.6;">
+              By signing below, Subcontractor acknowledges that they have read and agree to the
+              terms of this Agreement and that they are authorized to sign on behalf of the
+              entity listed above.
+            </p>
+
+            <div style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 1rem; margin-top: 0.75rem;">
+              <div>
+                <label for="agreement-signature">Subcontractor signature (type full name)</label>
+                <input
+                  type="text"
+                  id="agreement-signature"
+                  name="agreement_signature"
+                  placeholder="Type your full legal name"
+                  required
+                />
+              </div>
+              <div>
+                <label for="agreement-date">Date</label>
+                <input type="date" id="agreement-date" name="agreement_date" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- W-9 overlay (white card to capture) -->
+          <div class="document-card" style="margin-top: 2rem;">
+            <h2 style="margin-top: 0;">W-9 – Request for Taxpayer Identification Number</h2>
+            <p style="font-size: 0.85rem; margin-top: 0;">
+              Type directly into the fields on the W-9 below. We’ll capture an image of the
+              completed form and submit it with your agreement.
+            </p>
+
+            <div id="w9-capture" class="w9-wrapper">
+              <!-- Use your blank W-9 image in /images -->
+              <img src="images/w9-blank.jpg" alt="Blank IRS Form W-9" class="w9-bg" />
+
+              <!-- Overlay fields -->
+              <input
+                type="text"
+                name="w9_name"
+                class="w9-input w9-name"
+                placeholder="Name as shown on your tax return"
+                required
+              />
+              <input
+                type="text"
+                name="w9_business"
+                class="w9-input w9-business"
+                placeholder="Business name / disregarded entity (optional)"
+              />
+              <input
+                type="text"
+                name="w9_tax_class"
+                class="w9-input w9-tax-class"
+                placeholder="Federal tax classification (e.g., Individual / sole proprietor)"
+              />
+              <input
+                type="text"
+                name="w9_address"
+                class="w9-input w9-address"
+                placeholder="Address (number, street, and apt. or suite no.)"
+                required
+              />
+              <input
+                type="text"
+                name="w9_city"
+                class="w9-input w9-city"
+                placeholder="City, state, and ZIP code"
+                required
+              />
+              <input
+                type="text"
+                name="w9_account"
+                class="w9-input w9-account"
+                placeholder="List account number(s) here (optional)"
+              />
+
+              <!-- SSN segments -->
+              <input
+                type="text"
+                name="w9_ssn_1"
+                class="w9-input w9-ssn-1"
+                maxlength="3"
+                placeholder="XXX"
+              />
+              <input
+                type="text"
+                name="w9_ssn_2"
+                class="w9-input w9-ssn-2"
+                maxlength="2"
+                placeholder="XX"
+              />
+              <input
+                type="text"
+                name="w9_ssn_3"
+                class="w9-input w9-ssn-3"
+                maxlength="4"
+                placeholder="XXXX"
+              />
+
+              <!-- EIN -->
+              <input
+                type="text"
+                name="w9_ein"
+                class="w9-input w9-ein"
+                placeholder="XX-XXXXXXX"
+              />
+
+              <!-- Signature + date -->
+              <input
+                type="text"
+                name="w9_signature"
+                class="w9-input w9-signature"
+                placeholder="Sign here (type full name)"
+                required
+              />
+              <input
+                type="text"
+                name="w9_date"
+                class="w9-input w9-date"
+                placeholder="Date"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Submit section -->
+          <div style="margin-top: 1.75rem;">
+            <button type="submit" class="btn primary">
+              Generate documents &amp; submit to Anchors Homes
+            </button>
+            <div id="sub-status"></div>
+          </div>
+        </form>
       </div>
     </section>
   </main>
@@ -125,13 +275,75 @@
   <footer class="site-footer">
     <div class="container site-footer-inner">
       <span>&copy; <span id="year"></span> Anchors Homes LLC.</span>
-      <span>Interested in partnering? Share your details above.</span>
+      <span>Thank you for partnering with us.</span>
     </div>
   </footer>
 
   <script src="scripts.js"></script>
+
+  <!-- html2canvas to capture Agreement + W-9 as images -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const form = document.getElementById("sub-form");
+    const statusEl = document.getElementById("sub-status");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      statusEl.className = "";
+      statusEl.textContent = "Preparing documents… please wait.";
+
+      try {
+        const agreementEl = document.getElementById("agreement-capture");
+        const w9El = document.getElementById("w9-capture");
+
+        // Capture both sections as images
+        const [agreementCanvas, w9Canvas] = await Promise.all([
+          html2canvas(agreementEl, { scale: 2 }),
+          html2canvas(w9El, { scale: 2 })
+        ]);
+
+        const agreementBlob = await new Promise((resolve) =>
+          agreementCanvas.toBlob(resolve, "image/png")
+        );
+        const w9Blob = await new Promise((resolve) =>
+          w9Canvas.toBlob(resolve, "image/png")
+        );
+
+        const formData = new FormData(form); // includes all text inputs
+
+        if (agreementBlob) {
+          formData.append("agreement_file", agreementBlob, "subcontractor-agreement.png");
+        }
+        if (w9Blob) {
+          formData.append("w9_file", w9Blob, "w9-filled.png");
+        }
+
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" }
+        });
+
+        if (response.ok) {
+          form.reset();
+          statusEl.className = "success";
+          statusEl.textContent =
+            "Thank you! Your subcontractor information, agreement, and W-9 have been submitted.";
+        } else {
+          statusEl.className = "error";
+          statusEl.textContent =
+            "There was a problem submitting the form. Please try again or contact us directly.";
+        }
+      } catch (err) {
+        console.error(err);
+        statusEl.className = "error";
+        statusEl.textContent =
+          "Unexpected error preparing the documents. Please refresh the page and try again.";
+      }
+    });
   </script>
 </body>
 </html>
