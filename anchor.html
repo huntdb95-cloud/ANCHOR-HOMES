@@ -11,13 +11,29 @@
       max-width: 960px;
     }
 
-    /* Force dark text inside the Owner Login box */
-    .anchor-login-card,
+    /* Owner Login card styling and readable text */
+    .anchor-login-card {
+      background: #f9fafb;
+      color: #111827;
+    }
+
     .anchor-login-card * {
       color: #111827 !important;
     }
 
+    .anchor-login-card .form-input {
+      background: #ffffff;
+      color: #111827;
+    }
+
+    /* Dashboard text should also be dark and readable */
     .anchor-dashboard {
+      background: #ffffff;
+      color: #111827;
+    }
+
+    .anchor-dashboard h2,
+    .anchor-dashboard p {
       color: #111827;
     }
 
@@ -54,11 +70,13 @@
 
     .anchor-section-card h3 {
       margin: 0;
+      color: #111827;
     }
 
     .anchor-section-card p {
       font-size: 0.9rem;
       margin: 0;
+      color: #111827;
     }
 
     .anchor-links {
@@ -75,6 +93,7 @@
       border-radius: 999px;
       border: 1px solid rgba(15, 23, 42, 0.18);
       background: #ffffff;
+      color: #111827;
     }
 
     .anchor-iframe-wrapper {
@@ -89,7 +108,6 @@
       display: block;
       width: 100%;
       border: 0;
-      /* Keep height similar to what Box suggests */
       min-height: 550px;
     }
 
@@ -187,29 +205,11 @@
             <div class="anchor-links">
               <!-- Box main link (optional – opens Box in a full tab) -->
               <a
-                href="https://app.box.com/folder/0" 
+                href="https://app.box.com/folder/0"
                 target="_blank"
                 rel="noopener"
               >
                 Open Box in a new tab
-              </a>
-
-              <!-- Subcontractor Documents folder (Google Drive shortcut) -->
-              <a
-                href="https://drive.google.com/drive/folders/1mpOzYptMWAvOIL4Fc6zM0kIKTQyuaHD2"
-                target="_blank"
-                rel="noopener"
-              >
-                Subcontractor Documents (Drive)
-              </a>
-
-              <!-- Project Documents folder (Google Drive shortcut) -->
-              <a
-                href="https://drive.google.com/drive/folders/1L_LBbcQ9kzGcABzyaAZJGg0GhBJjTNjW"
-                target="_blank"
-                rel="noopener"
-              >
-                Project Documents (Drive)
               </a>
             </div>
 
@@ -235,8 +235,8 @@
 
           <p class="anchor-note">
             This login is a simple page-level password for convenience. Real security
-            for your files is handled by Box and Google Drive — only accounts you
-            grant access to will be able to view or modify your documents.
+            for your files is handled by Box — only accounts you grant access to
+            will be able to view or modify your documents.
           </p>
         </div>
       </div>
