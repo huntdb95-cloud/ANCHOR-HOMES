@@ -711,6 +711,18 @@ main {
   border: 1px solid #d4d4d8;
   background: #ffffff;
 }
+/* Text overlays for W-9 fields so html2canvas always sees the text */
+.w9-text-overlay {
+  position: absolute;
+  font-size: 8px;
+  line-height: 1.2;
+  padding: 0 1px;
+  margin: 0;
+  color: #000000;
+  font-family: "Helvetica", Arial, sans-serif;
+  pointer-events: none;  /* don't block clicks/type */
+  white-space: nowrap;   /* you can drop this if you want wrapping */
+}
 
 .w9-bg {
   width: 100%;
