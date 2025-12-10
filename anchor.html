@@ -11,12 +11,6 @@
       max-width: 960px;
     }
 
-    /* Add a little space below the tagline in the header */
-    .brand-tagline {
-      display: block;
-      margin-bottom: 0.4rem;
-    }
-
     /* Owner Login card styling and readable text */
     .anchor-login-card {
       background: #f9fafb;
@@ -580,7 +574,7 @@
       apiKey: "AIzaSyDZmiuGCuqufL_yF2EHwLKWNlPCzIhr2TU",
       authDomain: "tracker-5d621.firebaseapp.com",
       projectId: "tracker-5d621",
-      storageBucket: "tracker-5d621.appspot.com",
+      storageBucket: "tracker-5d621.firebasestorage.app",
       messagingSenderId: "950779208174",
       appId: "1:950779208174:web:ce37c7167ea0e125b0eeff",
       measurementId: "G-GX3M1SWVD2"
@@ -588,14 +582,7 @@
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-
-    // Make analytics optional so it can't break Firestore in local/dev environments
-    try {
-      getAnalytics(app);
-    } catch (err) {
-      console.warn("Firebase Analytics not initialized (this is OK in dev):", err);
-    }
-
+    const analytics = getAnalytics(app);
     const db = getFirestore(app);
     const coiCollection = collection(db, "coiRecords");
 
@@ -626,11 +613,10 @@
             glDate: data.glDate || ""
           });
         });
-        console.log("Loaded COI records from Firebase:", list);
         return list;
       } catch (e) {
         console.error("Error loading COI data from Firebase:", e);
-        alert("There was an error loading COI data from Firebase. Check console for details.");
+        alert("There was an error loading COI data from Firebase.");
         return [];
       }
     }
@@ -644,17 +630,15 @@
           wcDate: wcDate || "",
           glDate: glDate || ""
         });
-        console.log("Saved COI record:", { id, name, wcDate, glDate });
       } catch (e) {
         console.error("Error saving COI record:", e);
-        alert("There was an error saving this COI record to Firebase. Check console for details.");
+        alert("There was an error saving this COI record to Firebase.");
       }
     }
 
     async function deleteCoiRecord(id) {
       try {
         await deleteDoc(doc(db, "coiRecords", id));
-        console.log("Deleted COI record:", id);
       } catch (e) {
         console.error("Error deleting COI record:", e);
         alert("There was an error deleting this COI record from Firebase.");
@@ -772,23 +756,19 @@
           }
           tr.dataset.status = rowStatus;
 
-          // Name
           const nameTd = document.createElement("td");
           nameTd.textContent = item.name;
           tr.appendChild(nameTd);
 
-          // WC date
           const wcDateTd = document.createElement("td");
           wcDateTd.textContent = formatDateDisplay(item.wcDate);
           tr.appendChild(wcDateTd);
 
-          // WC days
           const wcDaysTd = document.createElement("td");
           wcDaysTd.textContent =
             wcStatus.diff === null || isNaN(wcStatus.diff) ? "-" : wcStatus.diff;
           tr.appendChild(wcDaysTd);
 
-          // WC status
           const wcStatusTd = document.createElement("td");
           const wcSpan = document.createElement("span");
           wcSpan.className = "coi-status " + wcStatus.statusClass;
@@ -796,18 +776,15 @@
           wcStatusTd.appendChild(wcSpan);
           tr.appendChild(wcStatusTd);
 
-          // GL date
           const glDateTd = document.createElement("td");
           glDateTd.textContent = formatDateDisplay(item.glDate);
           tr.appendChild(glDateTd);
 
-          // GL days
           const glDaysTd = document.createElement("td");
           glDaysTd.textContent =
             glStatus.diff === null || isNaN(glStatus.diff) ? "-" : glStatus.diff;
           tr.appendChild(glDaysTd);
 
-          // GL status
           const glStatusTd = document.createElement("td");
           const glSpan = document.createElement("span");
           glSpan.className = "coi-status " + glStatus.statusClass;
@@ -815,7 +792,6 @@
           glStatusTd.appendChild(glSpan);
           tr.appendChild(glStatusTd);
 
-          // Actions
           const actionsTd = document.createElement("td");
           const delBtn = document.createElement("button");
           delBtn.type = "button";
@@ -831,7 +807,6 @@
 
           coiTableBody.appendChild(tr);
 
-          // Alert chips for due WC / GL
           if (wcStatus.rowFlag === "due" && wcStatus.diff !== null && !isNaN(wcStatus.diff)) {
             anyDueSoon = true;
             const chip = document.createElement("div");
