@@ -10,10 +10,10 @@
   <style>
     /* Hidden wrapper so user doesn't see the W-9 capture, but html2canvas can */
     #w9-capture-wrapper {
-      position: fixed;
+      position: absolute;
       top: 0;
-      left: -9999px;
-      z-index: -1;
+      left: 0;
+      opacity: 0;           /* invisible but still fully rendered */
       pointer-events: none;
     }
 
@@ -46,8 +46,7 @@
       text-overflow: ellipsis;
     }
 
-    /* Approximate positions for a standard IRS W-9 layout.
-       You can tweak these later by changing top/left/max-width. */
+    /* Approximate positions for a standard IRS W-9 layout. */
 
     /* Line 1 – Name */
     #w9-name-text {
@@ -63,7 +62,7 @@
       max-width: 65%;
     }
 
-    /* Tax classification text, shown near the checkbox line */
+    /* Tax classification text */
     #w9-tax-class-text {
       top: 19.3%;
       left: 9%;
@@ -388,7 +387,7 @@
   <!-- Hidden W-9 capture (official image + overlay text) -->
   <div id="w9-capture-wrapper">
     <div id="w9-capture" class="w9-capture-page">
-      <!-- TODO: update src to your actual W-9 image filename -->
+      <!-- Make sure this path & file name matches your actual image -->
       <img
         src="w9.png"
         alt="IRS Form W-9"
@@ -445,6 +444,40 @@
       return select ? select.value : "";
     }
 
+    // Wait for the W-9 background image to load so html2canvas can see it
+    function waitForW9Image() {
+      const img = document.querySelector("#w9-capture .w9-image");
+      if (!img) {
+        console.warn("W-9 image element not found in DOM.");
+        return Promise.resolve();
+      }
+
+      if (img.complete && img.naturalWidth !== 0) {
+        return Promise.resolve();
+      }
+
+      return new Promise((resolve) => {
+        img.addEventListener(
+          "load",
+          () => {
+            console.log("W-9 background image loaded.");
+            resolve();
+          },
+          { once: true }
+        );
+        img.addEventListener(
+          "error",
+          () => {
+            console.error(
+              "Failed to load W-9 background image. Check the src path for w9.png."
+            );
+            resolve(); // still resolve so the form can submit with just overlay if needed
+          },
+          { once: true }
+        );
+      });
+    }
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       statusEl.className = "";
@@ -482,9 +515,8 @@
       const capturePage = document.getElementById("w9-capture");
 
       try {
-        // Explicitly enforce full letter-size before capture
-        capturePage.style.width = "8.5in";
-        capturePage.style.height = "11in";
+        // Ensure the W-9 background has loaded
+        await waitForW9Image();
 
         // Fill overlay text from form fields
         document.getElementById("w9-name-text").textContent =
@@ -508,7 +540,13 @@
         sigImg.src = sigDataUrl;
 
         // Capture full W-9 page as a large PNG
-        const w9Canvas = await html2canvas(capturePage, { scale: 2 });
+        const w9Canvas = await html2canvas(capturePage, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff",
+          logging: false
+        });
+
         const w9Blob = await new Promise((resolve) =>
           w9Canvas.toBlob(resolve, "image/png")
         );
@@ -516,6 +554,8 @@
         const formData = new FormData(form);
         if (w9Blob) {
           formData.append("w9_file", w9Blob, "w9-completed.png");
+        } else {
+          console.error("html2canvas returned a null blob – background may be cross-origin.");
         }
 
         const response = await fetch(form.action, {
@@ -525,7 +565,6 @@
         });
 
         if (response.ok) {
-          // Mark W-9 as completed and go back to landing page
           localStorage.setItem(W9_KEY, "true");
           window.location.href = "subcontractors.html?w9=done";
         } else {
