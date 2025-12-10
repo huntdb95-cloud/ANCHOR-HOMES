@@ -756,19 +756,23 @@
           }
           tr.dataset.status = rowStatus;
 
+          // Name
           const nameTd = document.createElement("td");
           nameTd.textContent = item.name;
           tr.appendChild(nameTd);
 
+          // WC date
           const wcDateTd = document.createElement("td");
           wcDateTd.textContent = formatDateDisplay(item.wcDate);
           tr.appendChild(wcDateTd);
 
+          // WC days
           const wcDaysTd = document.createElement("td");
           wcDaysTd.textContent =
             wcStatus.diff === null || isNaN(wcStatus.diff) ? "-" : wcStatus.diff;
           tr.appendChild(wcDaysTd);
 
+          // WC status
           const wcStatusTd = document.createElement("td");
           const wcSpan = document.createElement("span");
           wcSpan.className = "coi-status " + wcStatus.statusClass;
@@ -776,15 +780,18 @@
           wcStatusTd.appendChild(wcSpan);
           tr.appendChild(wcStatusTd);
 
+          // GL date
           const glDateTd = document.createElement("td");
           glDateTd.textContent = formatDateDisplay(item.glDate);
           tr.appendChild(glDateTd);
 
+          // GL days
           const glDaysTd = document.createElement("td");
           glDaysTd.textContent =
             glStatus.diff === null || isNaN(glStatus.diff) ? "-" : glStatus.diff;
           tr.appendChild(glDaysTd);
 
+          // GL status
           const glStatusTd = document.createElement("td");
           const glSpan = document.createElement("span");
           glSpan.className = "coi-status " + glStatus.statusClass;
@@ -792,6 +799,7 @@
           glStatusTd.appendChild(glSpan);
           tr.appendChild(glStatusTd);
 
+          // Actions
           const actionsTd = document.createElement("td");
           const delBtn = document.createElement("button");
           delBtn.type = "button";
@@ -807,6 +815,7 @@
 
           coiTableBody.appendChild(tr);
 
+          // Alert chips for due WC / GL
           if (wcStatus.rowFlag === "due" && wcStatus.diff !== null && !isNaN(wcStatus.diff)) {
             anyDueSoon = true;
             const chip = document.createElement("div");
