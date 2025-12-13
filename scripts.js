@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initSlider("hero", 5000);
   initSlider("reviews", 7000);
+  initIdMasks();
 });
 
 function initMobileNav() {
@@ -35,10 +36,11 @@ function initSlider(type, intervalMs) {
     slides[current].classList.add("active");
   }, intervalMs);
 }
-<script>
-  // --- Auto-insert dashes for SSN + FEIN/EIN ---
 
-  function digitsOnly(s) {
+  
+function initIdMasks() {
+// --- Auto-insert dashes for SSN + FEIN/EIN ---
+function digitsOnly(s) {
     return (s || "").replace(/\D/g, "");
   }
 
@@ -83,4 +85,4 @@ function initSlider(type, intervalMs) {
 
   attachMask(ssnInput, formatSSN);
   attachMask(feinInput, formatEIN);
-</script>
+}
