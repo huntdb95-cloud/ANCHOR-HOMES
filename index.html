@@ -5,7 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anchor Homes LLC | Custom Homes & Remodeling</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Page-specific overrides (keeps your existing site styling intact) -->
+  <style>
+    /* Full-width static hero image with overlay text */
+    .hero.hero--static {
+      position: relative;
+      width: 100%;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 0;
+      background-image: url("images/hero1.jpg"); /* <-- change to your single hero image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+
+    .hero.hero--static::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      /* subtle dark gradient for readability */
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0.35) 55%,
+        rgba(0, 0, 0, 0.15) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero.hero--static .hero-overlay {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .hero.hero--static .hero-content {
+      max-width: 720px;
+      color: #fff;
+    }
+
+    .hero.hero--static .hero-eyebrow {
+      opacity: 0.95;
+    }
+
+    .hero.hero--static .hero-content h1,
+    .hero.hero--static .hero-content p {
+      color: #fff;
+    }
+
+    .hero.hero--static .hero-content p {
+      opacity: 0.95;
+    }
+
+    /* Optional: give overlay content a soft backdrop on busy photos */
+    .hero.hero--static .hero-content.hero-panel {
+      padding: 22px 22px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+
+    /* Ensure service cards are side-by-side on desktop */
+    .card-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 20px !important;
+      align-items: stretch;
+    }
+
+    @media (max-width: 820px) {
+      .hero.hero--static {
+        min-height: 520px;
+        padding: 56px 0;
+      }
+      .card-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -31,11 +116,10 @@
   </header>
 
   <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <!-- LEFT: Text content -->
-        <div class="hero-content">
+    <!-- Hero (Static Full-Width Image) -->
+    <section class="hero hero--static">
+      <div class="container hero-overlay">
+        <div class="hero-content hero-panel">
           <div class="hero-eyebrow">Built on integrity</div>
           <h1>Thoughtfully crafted homes, delivered with care.</h1>
           <p>
@@ -46,26 +130,6 @@
           <div class="hero-actions">
             <a href="projects.html" class="btn primary">View Projects</a>
             <a href="contact.html" class="btn secondary">Request a Consultation</a>
-          </div>
-        </div>
-
-        <!-- RIGHT: Rotating project images -->
-        <div class="hero-slider" data-slider="hero">
-          <!-- Replace these image paths with your own project photos -->
-          <div class="slide active">
-            <img src="images/hero1.jpg" alt="Custom home exterior" />
-          </div>
-          <div class="slide">
-            <img src="images/hero2.jpg" alt="Open concept living room" />
-          </div>
-          <div class="slide">
-            <img src="images/hero3.jpg" alt="Modern kitchen remodel" />
-          </div>
-          <div class="slide">
-            <img src="images/hero4.jpg" alt="Outdoor living space" />
-          </div>
-          <div class="slide">
-            <img src="images/hero5.jpg" alt="Fine trim and details" />
           </div>
         </div>
       </div>
@@ -92,7 +156,7 @@
               lot and lifestyle.
             </p>
           </article>
-        
+
           <article class="card">
             <h3>General Contracting</h3>
             <p>
