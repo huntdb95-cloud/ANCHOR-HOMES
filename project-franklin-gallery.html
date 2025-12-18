@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Franklin Farmhouse | Project Gallery | Anchor Homes LLC</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .project-gallery-header{display:flex;flex-direction:column;gap:.75rem}
+    .breadcrumb{font-size:.95rem;color:var(--color-text-muted)}
+    .breadcrumb a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+    .project-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin-top:.25rem}
+    .meta-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.85rem .95rem}
+    .meta-label{font-size:.8rem;letter-spacing:.02em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:.35rem}
+    .meta-value{font-size:1rem;line-height:1.35}
+
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:1rem}
+    .gallery-item{display:block;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-decoration:none;color:inherit;transition:transform 120ms ease,box-shadow 120ms ease,border-color 120ms ease}
+    .gallery-item:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.14);box-shadow:0 10px 24px rgba(0,0,0,.25)}
+    .gallery-item img{width:100%;height:210px;object-fit:cover;display:block}
+    .gallery-caption{padding:.75rem .85rem;color:var(--color-text-muted);font-size:.9rem}
+
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999}
+    .lightbox.open{display:flex}
+    .lightbox-inner{max-width:1100px;width:100%;position:relative}
+    .lightbox-img{width:100%;max-height:82vh;object-fit:contain;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);display:block}
+    .lightbox-close{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(20,20,20,.8);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:20px;line-height:1}
+    .lightbox-close:hover{background:rgba(30,30,30,.9);border-color:rgba(255,255,255,.28)}
+
+    @media (max-width:800px){.project-meta{grid-template-columns:1fr}.gallery-item img{height:190px}}
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Anchor Homes LLC logo" class="brand-logo" />
+        <span class="brand-text">
+          <span class="brand-name">Anchor Homes LLC</span>
+          <span class="brand-tagline">Custom Homes &amp; Remodeling</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="subcontractors.html">Subcontractors</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="anchor.html">Anchor</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container project-gallery-header">
+        <div class="breadcrumb"><a href="projects.html">← Back to Projects</a></div>
+        <h1>Franklin Farmhouse</h1>
+        <p>Key build stages, finishes, and detail shots. (Replace placeholders with your real photos.)</p>
+
+        <div class="project-meta">
+          <div class="meta-card">
+            <div class="meta-label">Location</div>
+            <div class="meta-value">Franklin, TN</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Scope</div>
+            <div class="meta-value">Modern farmhouse with classic details</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Status</div>
+            <div class="meta-value">Current / Recent</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="gallery-grid">
+          <a class="gallery-item" href="images/franklin/1.jpg" data-lightbox="images/franklin/1.jpg">
+            <img src="images/franklin/1.jpg" alt="Franklin photo 1" />
+            <div class="gallery-caption">Photo 1</div>
+          </a>
+          <a class="gallery-item" href="images/franklin/2.jpg" data-lightbox="images/franklin/2.jpg">
+            <img src="images/franklin/2.jpg" alt="Franklin photo 2" />
+            <div class="gallery-caption">Photo 2</div>
+          </a>
+          <a class="gallery-item" href="images/franklin/3.jpg" data-lightbox="images/franklin/3.jpg">
+            <img src="images/franklin/3.jpg" alt="Franklin photo 3" />
+            <div class="gallery-caption">Photo 3</div>
+          </a>
+          <a class="gallery-item" href="images/franklin/4.jpg" data-lightbox="images/franklin/4.jpg">
+            <img src="images/franklin/4.jpg" alt="Franklin photo 4" />
+            <div class="gallery-caption">Photo 4</div>
+          </a>
+          <a class="gallery-item" href="images/franklin/5.jpg" data-lightbox="images/franklin/5.jpg">
+            <img src="images/franklin/5.jpg" alt="Franklin photo 5" />
+            <div class="gallery-caption">Photo 5</div>
+          </a>
+          <a class="gallery-item" href="images/franklin/6.jpg" data-lightbox="images/franklin/6.jpg">
+            <img src="images/franklin/6.jpg" alt="Franklin photo 6" />
+            <div class="gallery-caption">Photo 6</div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <span>&copy; <span id="year"></span> Anchor Homes LLC.</span>
+      <span>Projects shown for illustration. Ask about our latest builds.</span>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+    lightbox.innerHTML = `
+      <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" aria-label="Close">×</button>
+        <img class="lightbox-img" alt="Project photo preview" />
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    const lbImg = lightbox.querySelector(".lightbox-img");
+    const lbClose = lightbox.querySelector(".lightbox-close");
+
+    function openLightbox(src){ lbImg.src = src; lightbox.classList.add("open"); document.body.style.overflow="hidden"; }
+    function closeLightbox(){ lightbox.classList.remove("open"); lbImg.src=""; document.body.style.overflow=""; }
+
+    document.querySelectorAll("[data-lightbox]").forEach(a=>{
+      a.addEventListener("click",(e)=>{ e.preventDefault(); openLightbox(a.getAttribute("data-lightbox")); });
+    });
+
+    lbClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click",(e)=>{ if(e.target===lightbox) closeLightbox(); });
+    document.addEventListener("keydown",(e)=>{ if(e.key==="Escape" && lightbox.classList.contains("open")) closeLightbox(); });
+  </script>
+</body>
+</html>
 
