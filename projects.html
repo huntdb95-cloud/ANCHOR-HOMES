@@ -59,8 +59,7 @@
           </ul>
           <p style="margin-top: 0.75rem; color: var(--color-text-muted); font-size: 0.85rem;">
             <strong>Tip:</strong> Click or tap a map pin to view a photo and quick
-            details. Swap out the project data and images in the JavaScript to
-            match your active jobs.
+            details. The photo is clickable and opens that project’s gallery page.
           </p>
         </aside>
       </div>
@@ -74,7 +73,7 @@
     </div>
   </footer>
 
-    <script src="scripts.js"></script>
+  <script src="scripts.js"></script>
 
   <!-- Leaflet JS -->
   <script
@@ -87,6 +86,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Updated projects – 5 pins in Middle Tennessee
+    // NEW: each project includes a galleryPage (separate HTML file)
     const projects = [
       {
         name: "Old Hickory Lake Renovation",
@@ -94,7 +94,8 @@
         lat: 36.2558,
         lng: -86.6420,
         image: "images/project-old-hickory.jpg",
-        scope: "Lakeside renovation and exterior updates"
+        scope: "Lakeside renovation and exterior updates",
+        galleryPage: "project-old-hickory-gallery.html"
       },
       {
         name: "Nolensville New Build",
@@ -102,7 +103,8 @@
         lat: 35.9568,
         lng: -86.6669,
         image: "images/project-nolensville.jpg",
-        scope: "Ground-up custom home"
+        scope: "Ground-up custom home",
+        galleryPage: "project-nolensville-gallery.html"
       },
       {
         name: "Sylvan Park Remodel",
@@ -110,7 +112,8 @@
         lat: 36.1436,
         lng: -86.8390,
         image: "images/project-sylvan-park.jpg",
-        scope: "Interior remodel in historic neighborhood"
+        scope: "Interior remodel in historic neighborhood",
+        galleryPage: "project-sylvan-park-gallery.html"
       },
       {
         name: "Franklin Farmhouse",
@@ -118,7 +121,8 @@
         lat: 35.9251,
         lng: -86.8689,
         image: "images/project-franklin.jpg",
-        scope: "Modern farmhouse with classic details"
+        scope: "Modern farmhouse with classic details",
+        galleryPage: "project-franklin-gallery.html"
       },
       {
         name: "Arrington Estate Home",
@@ -126,7 +130,8 @@
         lat: 35.8681,
         lng: -86.7083,
         image: "images/project-arrington.jpg",
-        scope: "Estate-style custom home"
+        scope: "Estate-style custom home",
+        galleryPage: "project-arrington-gallery.html"
       }
     ];
 
@@ -142,19 +147,31 @@
     }).addTo(map);
 
     const bounds = [];
+    const markersByIndex = [];
 
-    projects.forEach((project) => {
+    projects.forEach((project, index) => {
       const { lat, lng } = project;
+
+      // NEW: make popup image clickable and point to the project gallery page
       const popupContent = `
         <div class="project-popup">
           <h3>${project.name}</h3>
           <p>${project.location}</p>
           <p style="margin-bottom: 0.5rem;">${project.scope}</p>
-          <img src="${project.image}" alt="${project.name}" />
+
+          <a href="${project.galleryPage}" class="project-popup-image-link" aria-label="View gallery for ${project.name}">
+            <img src="${project.image}" alt="${project.name}" />
+          </a>
+
+          <p style="margin: 0.5rem 0 0;">
+            <a href="${project.galleryPage}">View Gallery &rarr;</a>
+          </p>
         </div>
       `;
 
-      L.marker([lat, lng]).addTo(map).bindPopup(popupContent);
+      const marker = L.marker([lat, lng]).addTo(map).bindPopup(popupContent);
+      markersByIndex[index] = marker;
+
       bounds.push([lat, lng]);
     });
 
@@ -164,7 +181,7 @@
 
     // Populate side list
     const listEl = document.getElementById("project-list");
-    projects.forEach((project) => {
+    projects.forEach((project, index) => {
       const li = document.createElement("li");
       li.innerHTML = `
         <span class="project-name">${project.name}</span><br />
@@ -173,7 +190,9 @@
       `;
       li.style.cursor = "pointer";
       li.addEventListener("click", () => {
-        map.setView([project.lat, project.lng], 13);
+        map.setView([project.lat, project.lng], 13, { animate: true });
+        const marker = markersByIndex[index];
+        if (marker) marker.openPopup();
       });
       listEl.appendChild(li);
     });
