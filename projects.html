@@ -339,20 +339,27 @@
       const { lat, lng } = project;
 
       const popupContent = `
-        <div class="project-popup">
-          <h3>${project.name}</h3>
-          <p>${project.location}</p>
-          <p style="margin-bottom: 0.5rem;">${project.scope}</p>
+  <div class="project-popup-card">
+    <a class="project-popup-media" href="${project.galleryPage}" aria-label="View gallery for ${project.name}">
+      <img src="${project.image}" alt="${project.name}" />
+      <div class="project-popup-overlay">
+        <span class="project-chip">📍 ${project.location}</span>
+        <span class="project-chip">🖼️ Gallery</span>
+      </div>
+    </a>
 
-          <a href="${project.galleryPage}" class="project-popup-image-link" aria-label="View gallery for ${project.name}">
-            <img src="${project.image}" alt="${project.name}" />
-          </a>
+    <div class="project-popup-body">
+      <div class="project-popup-title">${project.name}</div>
+      <p class="project-popup-scope">${project.scope}</p>
 
-          <p style="margin: 0.5rem 0 0;">
-            <a href="${project.galleryPage}">View Gallery &rarr;</a>
-          </p>
-        </div>
-      `;
+      <div class="project-popup-actions">
+        <a class="project-btn" href="${project.galleryPage}">View Gallery →</a>
+        <a class="project-link" href="${project.galleryPage}">Open</a>
+      </div>
+    </div>
+  </div>
+`;
+
 
       const marker = L.marker([lat, lng]).addTo(map).bindPopup(popupContent);
       markersByIndex[index] = marker;
