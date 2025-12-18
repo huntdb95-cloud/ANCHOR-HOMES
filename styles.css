@@ -938,5 +938,24 @@ main {
     width: 100%;
     justify-content: center;
   }
+  /* Nav: Anchor icon should match other menu item height */
+.main-nav .nav-anchor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1; /* prevents extra vertical space */
+}
+
+.main-nav .nav-anchor img {
+  height: 1em;      /* match text height */
+  width: auto;
+  display: block;
+  opacity: 0.95;
+}
+
+.main-nav .nav-anchor:hover img {
+  opacity: 1;
+}
+
 }
 
