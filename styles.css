@@ -966,7 +966,7 @@ main {
 .scroll-hero {
   position: relative;
   width: 100%;
-  min-height: 520px;
+  min-height: 720px;
   display: flex;
   align-items: center;
   padding: 4rem 0;
