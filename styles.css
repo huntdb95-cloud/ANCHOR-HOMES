@@ -974,6 +974,75 @@ main {
 .main-nav .nav-anchor:hover img {
   opacity: 1;
 }
+  /* =========================
+   Scroll background sections
+   ========================= */
+.scroll-hero {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+  overflow: hidden;
+
+  /* background image behavior */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* the “scrolling background” feel */
+}
+
+/* Background images */
+.scroll-hero--floorplan { background-image: url("floorplan.jpg"); }
+.scroll-hero--framing  { background-image: url("framing.jpg"); }
+
+/* Subtle dark overlay for readability */
+.scroll-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 15, 20, 0.45);
+  pointer-events: none;
+}
+
+.scroll-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-hero__card {
+  max-width: 680px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 18px;
+  padding: 1.75rem 1.75rem 1.5rem;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+}
+
+.scroll-hero__card h2 {
+  margin: 0 0 0.6rem;
+  line-height: 1.15;
+}
+
+.scroll-hero__card p {
+  margin: 0 0 1.1rem;
+  color: rgba(15, 23, 42, 0.82);
+  font-size: 1.02rem;
+}
+
+/* Mobile: fixed backgrounds can be janky on iOS; disable it */
+@media (max-width: 900px) {
+  .scroll-hero {
+    min-height: 480px;
+    padding: 3.25rem 0;
+    background-attachment: scroll;
+  }
+  .scroll-hero__card {
+    padding: 1.4rem 1.35rem 1.25rem;
+  }
+}
+
 
 }
 
