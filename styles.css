@@ -979,8 +979,8 @@ main {
 }
 
 /* Background images */
-.scroll-hero--floorplan { background-image: url("floorplan.jpg"); }
-.scroll-hero--framing  { background-image: url("framing.jpg"); }
+.scroll-hero--floorplan { background-image: url("floorplan.png"); }
+.scroll-hero--framing  { background-image: url("framing.png"); }
 
 /* Dark overlay for readability */
 .scroll-hero::before {
