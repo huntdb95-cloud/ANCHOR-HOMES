@@ -53,138 +53,127 @@
       border-radius: 12px;
       overflow: hidden;
     }
+
     /* ===== Upgraded Leaflet popup styling (projects page only) ===== */
-.leaflet-popup-content-wrapper {
-  border-radius: 18px;
-  padding: 0;
-  overflow: hidden;
-  background: rgba(18, 22, 30, 0.92);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
-}
+    .leaflet-popup-content-wrapper {
+      border-radius: 18px;
+      padding: 0;
+      overflow: hidden;
+      background: rgba(18, 22, 30, 0.92);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    }
 
-.leaflet-popup-tip {
-  background: rgba(18, 22, 30, 0.92);
-  border: 1px solid rgba(255,255,255,0.10);
-}
+    .leaflet-popup-tip {
+      background: rgba(18, 22, 30, 0.92);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
 
-.leaflet-popup-content {
-  margin: 0;
-  width: 300px !important; /* consistent width */
-  font-family: inherit;
-}
+    .leaflet-popup-content {
+      margin: 0;
+      width: 300px !important; /* consistent width */
+      font-family: inherit;
+    }
 
-.project-popup-card {
-  display: flex;
-  flex-direction: column;
-}
+    .project-popup-card {
+      display: flex;
+      flex-direction: column;
+    }
 
-.project-popup-media {
-  position: relative;
-  display: block;
-  line-height: 0;
-}
+    .project-popup-media {
+      position: relative;
+      display: block;
+      line-height: 0;
+    }
 
-.project-popup-media img {
-  width: 100%;
-  height: 165px;
-  object-fit: cover;
-  display: block;
-  transition: transform 160ms ease, filter 160ms ease;
-}
+    .project-popup-media img {
+      width: 100%;
+      height: 165px;
+      object-fit: cover;
+      display: block;
+      transition: transform 160ms ease, filter 160ms ease;
+    }
 
-.project-popup-media:hover img {
-  transform: scale(1.03);
-  filter: saturate(1.05);
-}
+    .project-popup-media:hover img {
+      transform: scale(1.03);
+      filter: saturate(1.05);
+    }
 
-.project-popup-overlay {
-  position: absolute;
-  inset: auto 12px 12px 12px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
+    .project-popup-overlay {
+      position: absolute;
+      inset: auto 12px 12px 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
 
-.project-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  line-height: 1;
-  color: rgba(255,255,255,0.92);
-  background: rgba(0,0,0,0.45);
-  border: 1px solid rgba(255,255,255,0.16);
-}
+    .project-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      line-height: 1;
+      color: rgba(255,255,255,0.92);
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.16);
+    }
 
-.project-popup-body {
-  padding: 12px 14px 14px 14px;
-}
+    .project-popup-body {
+      padding: 12px 14px 14px 14px;
+    }
 
-.project-popup-title {
-  margin: 2px 0 6px 0;
-  font-size: 16px;
-  line-height: 1.25;
-  font-weight: 700;
-  color: rgba(255,255,255,0.96);
-}
+    .project-popup-title {
+      margin: 2px 0 6px 0;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 700;
+      color: rgba(255,255,255,0.96);
+    }
 
-.project-popup-scope {
-  margin: 0 0 12px 0;
-  font-size: 13px;
-  line-height: 1.35;
-  color: rgba(255,255,255,0.78);
-}
+    .project-popup-scope {
+      margin: 0 0 12px 0;
+      font-size: 13px;
+      line-height: 1.35;
+      color: rgba(255,255,255,0.78);
+    }
 
-.project-popup-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
+    .project-popup-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
 
-.project-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 9px 12px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 13px;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.95);
-  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
-  white-space: nowrap;
-}
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.95);
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+      white-space: nowrap;
+    }
 
-.project-btn:hover {
-  transform: translateY(-1px);
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.22);
-}
+    .project-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.22);
+    }
 
-.project-link {
-  font-size: 13px;
-  color: rgba(255,255,255,0.80);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.project-link:hover {
-  color: rgba(255,255,255,0.95);
-}
-
-/* Mobile: allow narrower popups */
-@media (max-width: 420px) {
-  .leaflet-popup-content { width: 260px !important; }
-  .project-popup-media img { height: 150px; }
-}
-
+    /* Mobile: allow narrower popups */
+    @media (max-width: 420px) {
+      .leaflet-popup-content { width: 260px !important; }
+      .project-popup-media img { height: 150px; }
+    }
 
     @media (max-width: 768px) {
       #projects-map {
@@ -192,14 +181,12 @@
         min-height: 420px;
       }
     }
-  
 
     /* Premium map pins (for Leaflet circleMarker) */
     .premium-pin {
       filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35))
               drop-shadow(0 1px 0 rgba(255,255,255,0.06));
     }
-
   </style>
 </head>
 
@@ -226,9 +213,8 @@
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="anchor.html" class="nav-anchor" aria-label="Anchor">
-  <img src="anchor-removebg-preview.png" alt="Anchor" />
-</a>
-
+          <img src="anchor-removebg-preview.png" alt="Anchor" />
+        </a>
       </nav>
     </div>
   </header>
@@ -298,7 +284,7 @@
       {
         name: "Nolensville Spec-Build",
         location: "Nolensville, TN",
-        lat: 35.9568, 
+        lat: 35.9568,
         lng: -86.6669,
         image: "images/project-nolensville.jpg",
         scope: "Ground-up custom home",
@@ -311,7 +297,7 @@
         lng: -86.75521378535235,
         image: "images/sylvan-park/1.jpg",
         scope: "New Build in East Nashville",
-        galleryPage: "project-sylvan-park-gallery.html"
+        galleryPage: "project-sylvan-park-gallery.html",
         forSaleUrl: "https://www.realtracs.com/listings/5990501/address/2803-jones-ave-nashville-tn-37207?listingStatusesCriteria=1:::;8:::;7:::&propertyClasses=Residential&mlsNumbers=2957976&auction=1&openHouse=0&primaryBedOnMain=0&sort=defaultAsc"
       },
       {
@@ -352,28 +338,27 @@
       const { lat, lng } = project;
 
       const popupContent = `
-  <div class="project-popup-card">
-    <a class="project-popup-media" href="${project.galleryPage}" aria-label="View gallery for ${project.name}">
-      <img src="${project.image}" alt="${project.name}" />
-      <div class="project-popup-overlay">
-        <span class="project-chip">📍 ${project.location}</span>
-      </div>
-    </a>
+        <div class="project-popup-card">
+          <a class="project-popup-media" href="${project.galleryPage}" aria-label="View gallery for ${project.name}">
+            <img src="${project.image}" alt="${project.name}" />
+            <div class="project-popup-overlay">
+              <span class="project-chip">📍 ${project.location}</span>
+            </div>
+          </a>
 
-    <div class="project-popup-body">
-      <div class="project-popup-title">${project.name}</div>
-      <p class="project-popup-scope">${project.scope}</p>
+          <div class="project-popup-body">
+            <div class="project-popup-title">${project.name}</div>
+            <p class="project-popup-scope">${project.scope}</p>
 
-      <div class="project-popup-actions">
-  <a class="project-btn" href="${project.galleryPage}">View Gallery →</a>
-  ${project.forSaleUrl ? `<a class="project-btn" href="${project.forSaleUrl}" target="_blank" rel="noopener">For Sale →</a>` : ""}
-</div>
-    </div>
-  </div>
-`;
+            <div class="project-popup-actions">
+              <a class="project-btn" href="${project.galleryPage}">View Gallery →</a>
+              ${project.forSaleUrl ? `<a class="project-btn" href="${project.forSaleUrl}" target="_blank" rel="noopener">For Sale →</a>` : ""}
+            </div>
+          </div>
+        </div>
+      `;
 
-
-            const marker = L.circleMarker([lat, lng], {
+      const marker = L.circleMarker([lat, lng], {
         radius: 8,
         color: "rgba(255,255,255,0.75)",   // halo stroke
         weight: 2,
