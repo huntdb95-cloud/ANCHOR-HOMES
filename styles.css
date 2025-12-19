@@ -409,6 +409,26 @@ main {
   color: var(--color-text-muted);
   max-width: 34rem;
 }
+/* Design page header: solid black readable box */
+.page-header .container {
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
+  padding: 22px 22px;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+}
+
+/* Ensure header text is bright */
+.page-header .container h1,
+.page-header .container p {
+  color: #fff;
+}
+
+/* Optional: make the paragraph slightly softer than the title */
+.page-header .container p {
+  opacity: 0.9;
+}
+
 
 /* Projects map layout */
 .projects-layout {
