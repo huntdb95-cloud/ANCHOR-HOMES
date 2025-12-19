@@ -998,7 +998,7 @@ main {
 
 .scroll-hero__card {
   max-width: 680px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(11, 15, 20, 0.92);
   border: 1px solid rgba(15, 23, 42, 0.12);
   border-radius: 18px;
   padding: 1.75rem 1.75rem 1.5rem;
@@ -1012,16 +1012,16 @@ main {
 
 .scroll-hero__card p {
   margin: 0 0 1.1rem;
-  color: rgba(15, 23, 42, 0.82);
+  color: rgba(249, 250, 251, 0.88);
   font-size: 1.02rem;
 }
 /* Make the overlay card text readable */
 .scroll-hero__card h2 {
-  color: #0b0f14 !important;   /* deep charcoal */
+  color: #f9fafb !important;   /* deep charcoal */
 }
 
 .scroll-hero__card p {
-  color: rgba(11, 15, 20, 0.82) !important;
+  color: rgba(249, 250, 251, 0.88) !important;
 }
 /* Add a black spacer between the two scroll sections */
 .scroll-hero + .scroll-hero {
