@@ -117,6 +117,39 @@
       margin-top: 0.75rem;
     }
 
+    /* ---------------- Tabs (NEW) ---------------- */
+    .anchor-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0.25rem 0 1rem;
+    }
+
+    .anchor-tab-btn {
+      font-size: 0.85rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.18);
+      background: #ffffff;
+      color: #111827;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .anchor-tab-btn.active {
+      background: #0f766e;
+      border-color: #0f766e;
+      color: #ffffff;
+    }
+
+    .anchor-tab-panel {
+      display: none;
+    }
+
+    .anchor-tab-panel.active {
+      display: block;
+    }
+
     /* COI tracker styles */
     .coi-form-grid {
       display: grid;
@@ -303,9 +336,8 @@
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="anchor.html" class="nav-anchor" aria-label="Anchor">
-  <img src="anchor-removebg-preview.png" alt="Anchor" />
-</a>
-
+          <img src="anchor-removebg-preview.png" alt="Anchor" />
+        </a>
       </nav>
     </div>
   </header>
@@ -361,154 +393,182 @@
             subcontractor and project documents.
           </p>
 
-          <!-- Box file manager card -->
-          <div class="anchor-section-card">
-            <h3>Anchor File Manager</h3>
-            <p>
-              The Box widget below lets you browse, preview, and manage files. Use
-              it as your main “file explorer” for Anchor Homes.
-            </p>
-
-            <div class="anchor-links">
-              <!-- Box main link (optional – opens Box in a full tab) -->
-              <a
-                href="https://app.box.com/folder/0"
-                target="_blank"
-                rel="noopener"
-              >
-                Open Box in a new tab
-              </a>
-            </div>
-
-            <!-- Box embed widget -->
-            <div class="anchor-iframe-wrapper">
-              <iframe
-                src="https://app.box.com/embed/s/duirh1egpllrudljdi66mrzsmv37uvsw?sortColumn=date"
-                width="800"
-                height="550"
-                frameborder="0"
-                allowfullscreen
-                webkitallowfullscreen
-                msallowfullscreen
-              ></iframe>
-            </div>
-
-            <p class="anchor-note">
-              You can upload files, create folders, and manage documents directly in
-              this Box embed. For more advanced actions, use the “Open Box in a new
-              tab” button above.
-            </p>
+          <!-- Tabs (NEW) -->
+          <div class="anchor-tabs" role="tablist" aria-label="Anchor dashboard tabs">
+            <button
+              type="button"
+              class="anchor-tab-btn active"
+              data-tab="file-manager"
+              role="tab"
+              aria-selected="true"
+            >
+              File Manager
+            </button>
+            <button
+              type="button"
+              class="anchor-tab-btn"
+              data-tab="coi-tracker"
+              role="tab"
+              aria-selected="false"
+            >
+              COI Tracker
+            </button>
           </div>
 
-          <!-- Subcontractor COI Tracker -->
-          <div class="anchor-section-card" id="coi-card">
-            <h3>Subcontractor COI Tracker</h3>
-            <p>
-              Track Workers Compensation and General Liability renewal dates for each
-              subcontractor. When a renewal date is within 30 days, it will appear in
-              the COI alert bar so you know to request an updated certificate before
-              paying them.
-            </p>
-
-            <!-- Add COI form -->
-            <form id="coi-form">
-              <div class="coi-form-grid">
-                <div>
-                  <label class="form-label" for="coi-name">Subcontractor name</label>
-                  <input
-                    id="coi-name"
-                    name="coi_name"
-                    class="form-input"
-                    placeholder="e.g., Smith Electric LLC"
-                    required
-                  />
-                </div>
-                <div>
-                  <label class="form-label" for="coi-wc-date">
-                    Workers Comp renewal
-                  </label>
-                  <input
-                    id="coi-wc-date"
-                    name="coi_wc_date"
-                    type="date"
-                    class="form-input"
-                  />
-                </div>
-                <div>
-                  <label class="form-label" for="coi-gl-date">
-                    General Liability renewal
-                  </label>
-                  <input
-                    id="coi-gl-date"
-                    name="coi_gl_date"
-                    type="date"
-                    class="form-input"
-                  />
-                </div>
-                <div>
-                  <button type="submit" class="btn primary" style="width:100%;min-width:120px;">
-                    Add / Update
-                  </button>
-                </div>
-              </div>
-              <p style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;">
-                Tip: You can leave one of the dates blank if a subcontractor only has
-                Workers Comp or only General Liability at the moment.
+          <!-- Tab panel: File Manager (Box) -->
+          <div class="anchor-tab-panel active" id="tab-file-manager" role="tabpanel">
+            <!-- Box file manager card -->
+            <div class="anchor-section-card">
+              <h3>Anchor File Manager</h3>
+              <p>
+                The Box widget below lets you browse, preview, and manage files. Use
+                it as your main “file explorer” for Anchor Homes.
               </p>
-            </form>
 
-            <!-- COI alert bar (shows only when there are renewals within 30 days) -->
-            <div class="coi-alert-bar" id="coi-alert-bar">
-              <div class="coi-alert-title">Renewals within 30 days</div>
-              <div class="coi-alert-list" id="coi-alert-list"></div>
-            </div>
-
-            <!-- Quick filter bar -->
-            <div class="coi-filter-bar">
-              <span class="coi-filter-label">Show:</span>
-              <button type="button" class="coi-filter-btn active" data-filter="all">
-                All
-              </button>
-              <button type="button" class="coi-filter-btn" data-filter="due">
-                Due soon (≤ 30 days)
-              </button>
-              <button type="button" class="coi-filter-btn" data-filter="expired">
-                Expired
-              </button>
-              <button type="button" class="coi-filter-btn" data-filter="ok">
-                Active / OK
-              </button>
-            </div>
-
-            <!-- COI table -->
-            <div class="coi-table-wrapper">
-              <table class="coi-table" id="coi-table">
-                <thead>
-                  <tr>
-                    <th>Subcontractor</th>
-                    <th>WC renewal</th>
-                    <th>WC days</th>
-                    <th>WC status</th>
-                    <th>GL renewal</th>
-                    <th>GL days</th>
-                    <th>GL status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="coi-table-body">
-                  <!-- Filled by JS -->
-                </tbody>
-              </table>
-              <div class="coi-empty" id="coi-empty-message">
-                No subcontractors tracked yet. Add a name and at least one renewal
-                date above.
+              <div class="anchor-links">
+                <!-- Box main link (optional – opens Box in a full tab) -->
+                <a
+                  href="https://app.box.com/folder/0"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Open Box in a new tab
+                </a>
               </div>
-            </div>
 
-            <p class="anchor-note">
-              COI reminders are stored in Firebase so you can view this tracker on
-              any device using this dashboard (subject to your Firestore security rules).
-            </p>
+              <!-- Box embed widget -->
+              <div class="anchor-iframe-wrapper">
+                <iframe
+                  src="https://app.box.com/embed/s/duirh1egpllrudljdi66mrzsmv37uvsw?sortColumn=date"
+                  width="800"
+                  height="550"
+                  frameborder="0"
+                  allowfullscreen
+                  webkitallowfullscreen
+                  msallowfullscreen
+                ></iframe>
+              </div>
+
+              <p class="anchor-note">
+                You can upload files, create folders, and manage documents directly in
+                this Box embed. For more advanced actions, use the “Open Box in a new
+                tab” button above.
+              </p>
+            </div>
+          </div>
+
+          <!-- Tab panel: COI Tracker -->
+          <div class="anchor-tab-panel" id="tab-coi-tracker" role="tabpanel">
+            <!-- Subcontractor COI Tracker -->
+            <div class="anchor-section-card" id="coi-card">
+              <h3>Subcontractor COI Tracker</h3>
+              <p>
+                Track Workers Compensation and General Liability renewal dates for each
+                subcontractor. When a renewal date is within 30 days, it will appear in
+                the COI alert bar so you know to request an updated certificate before
+                paying them.
+              </p>
+
+              <!-- Add COI form -->
+              <form id="coi-form">
+                <div class="coi-form-grid">
+                  <div>
+                    <label class="form-label" for="coi-name">Subcontractor name</label>
+                    <input
+                      id="coi-name"
+                      name="coi_name"
+                      class="form-input"
+                      placeholder="e.g., Smith Electric LLC"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label class="form-label" for="coi-wc-date">
+                      Workers Comp renewal
+                    </label>
+                    <input
+                      id="coi-wc-date"
+                      name="coi_wc_date"
+                      type="date"
+                      class="form-input"
+                    />
+                  </div>
+                  <div>
+                    <label class="form-label" for="coi-gl-date">
+                      General Liability renewal
+                    </label>
+                    <input
+                      id="coi-gl-date"
+                      name="coi_gl_date"
+                      type="date"
+                      class="form-input"
+                    />
+                  </div>
+                  <div>
+                    <button type="submit" class="btn primary" style="width:100%;min-width:120px;">
+                      Add / Update
+                    </button>
+                  </div>
+                </div>
+                <p style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;">
+                  Tip: You can leave one of the dates blank if a subcontractor only has
+                  Workers Comp or only General Liability at the moment.
+                </p>
+              </form>
+
+              <!-- COI alert bar (shows only when there are renewals within 30 days) -->
+              <div class="coi-alert-bar" id="coi-alert-bar">
+                <div class="coi-alert-title">Renewals within 30 days</div>
+                <div class="coi-alert-list" id="coi-alert-list"></div>
+              </div>
+
+              <!-- Quick filter bar -->
+              <div class="coi-filter-bar">
+                <span class="coi-filter-label">Show:</span>
+                <button type="button" class="coi-filter-btn active" data-filter="all">
+                  All
+                </button>
+                <button type="button" class="coi-filter-btn" data-filter="due">
+                  Due soon (≤ 30 days)
+                </button>
+                <button type="button" class="coi-filter-btn" data-filter="expired">
+                  Expired
+                </button>
+                <button type="button" class="coi-filter-btn" data-filter="ok">
+                  Active / OK
+                </button>
+              </div>
+
+              <!-- COI table -->
+              <div class="coi-table-wrapper">
+                <table class="coi-table" id="coi-table">
+                  <thead>
+                    <tr>
+                      <th>Subcontractor</th>
+                      <th>WC renewal</th>
+                      <th>WC days</th>
+                      <th>WC status</th>
+                      <th>GL renewal</th>
+                      <th>GL days</th>
+                      <th>GL status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="coi-table-body">
+                    <!-- Filled by JS -->
+                  </tbody>
+                </table>
+                <div class="coi-empty" id="coi-empty-message">
+                  No subcontractors tracked yet. Add a name and at least one renewal
+                  date above.
+                </div>
+              </div>
+
+              <p class="anchor-note">
+                COI reminders are stored in Firebase so you can view this tracker on
+                any device using this dashboard (subject to your Firestore security rules).
+              </p>
+            </div>
           </div>
 
           <p class="anchor-note">
@@ -530,7 +590,7 @@
 
   <script src="scripts.js"></script>
 
-  <!-- Non-module script: just year + login -->
+  <!-- Non-module script: just year + login + tabs -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -543,6 +603,29 @@
     const loginCard = document.getElementById("anchor-login-card");
     const dashboard = document.getElementById("anchor-dashboard");
 
+    // Tabs (NEW)
+    const tabButtons = document.querySelectorAll(".anchor-tab-btn");
+    const tabFile = document.getElementById("tab-file-manager");
+    const tabCoi = document.getElementById("tab-coi-tracker");
+
+    function setActiveTab(tabName) {
+      const isFile = tabName === "file-manager";
+      tabFile.classList.toggle("active", isFile);
+      tabCoi.classList.toggle("active", !isFile);
+
+      tabButtons.forEach((btn) => {
+        const active = btn.dataset.tab === tabName;
+        btn.classList.toggle("active", active);
+        btn.setAttribute("aria-selected", active ? "true" : "false");
+      });
+    }
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setActiveTab(btn.dataset.tab);
+      });
+    });
+
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
       const val = passwordInput.value || "";
@@ -552,6 +635,7 @@
         loginCard.style.display = "none";
         dashboard.style.display = "block";
         passwordInput.value = "";
+        setActiveTab("file-manager"); // default tab
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         loginError.style.display = "inline";
