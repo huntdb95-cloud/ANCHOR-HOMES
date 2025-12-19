@@ -1044,3 +1044,32 @@ main {
     padding: 1.4rem 1.35rem 1.25rem;
   }
 }
+
+
+/* =========================
+   About page patterned background (below header)
+   ========================= */
+.page-bg{
+  position: relative;
+  width: 100%;
+  background-image: url("anchorbackground.png");
+  background-repeat: repeat;
+  background-position: center top;
+  background-size: 1400px auto; /* adjust pattern scale if desired */
+}
+
+/* Dark overlay so text remains readable on the pattern */
+.page-bg::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+/* Keep page content above the overlay */
+.page-bg > *{
+  position: relative;
+  z-index: 1;
+}
+
