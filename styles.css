@@ -1053,9 +1053,9 @@ main {
   position: relative;
   width: 100%;
   background-image: url("anchorbackground1.png");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-position: center top;
-  background-size: 1400px auto; /* adjust pattern scale if desired */
+  background-size: cover; /* adjust pattern scale if desired */
 }
 
 /* Dark overlay so text remains readable on the pattern */
