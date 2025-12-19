@@ -998,12 +998,15 @@ main {
 
 .scroll-hero__card {
   max-width: 680px;
-  background: rgba(11, 15, 20, 0.92);
-  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(0, 0, 0, 0.28);  /* semi-transparent like hero-panel */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: 18px;
   padding: 1.75rem 1.75rem 1.5rem;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
 }
+
 
 .scroll-hero__card h2 {
   margin: 0 0 0.6rem;
