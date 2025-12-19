@@ -1015,6 +1015,19 @@ main {
   color: rgba(15, 23, 42, 0.82);
   font-size: 1.02rem;
 }
+/* Make the overlay card text readable */
+.scroll-hero__card h2 {
+  color: #0b0f14 !important;   /* deep charcoal */
+}
+
+.scroll-hero__card p {
+  color: rgba(11, 15, 20, 0.82) !important;
+}
+/* Add a black spacer between the two scroll sections */
+.scroll-hero + .scroll-hero {
+  border-top: 70px solid #000;  /* adjust height of black gap */
+}
+
 
 /* Mobile: fixed backgrounds can be janky on iOS; disable it */
 @media (max-width: 900px) {
