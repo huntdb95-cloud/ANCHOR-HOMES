@@ -36,13 +36,11 @@
 
     /* ===== Floating card system so text is readable over background ===== */
     .about-float-card {
-      background: rgba(10, 12, 16, 0.72); /* dark glass */
+      background: #000; /* ✅ opaque */
       border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 0.9rem;
       box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
       padding: 1.25rem;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
     }
 
     /* Ensure all text inside floating cards is readable */
@@ -54,29 +52,21 @@
     .about-float-card h3,
     .about-float-card h4,
     .about-float-card strong {
-      color: rgba(255, 255, 255, 0.92);
+      color: #fff;
     }
 
     .about-float-card p {
-      color: rgba(255, 255, 255, 0.88);
-    }
-
-    .about-float-card h1,
-    .about-float-card h2,
-    .about-float-card h3 {
-      color: rgba(255, 255, 255, 0.95);
+      color: rgba(255, 255, 255, 0.92);
     }
 
     /* Owner card tweaks (keeps your existing layout but makes it match the float style) */
     .about-owner-card {
       border-radius: 0.9rem;
       border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(10, 12, 16, 0.72);
+      background: #000; /* ✅ opaque */
       padding: 1.25rem;
       text-align: center;
       box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
     }
 
     .about-owner-photo {
@@ -93,19 +83,19 @@
     .about-owner-name {
       font-weight: 600;
       font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.95);
+      color: #fff;
       margin-bottom: 0.25rem;
     }
 
     .about-owner-title {
       font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255, 255, 255, 0.82);
       margin-bottom: 0.75rem;
     }
 
     .about-owner-text {
       font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.88);
+      color: rgba(255, 255, 255, 0.92);
       line-height: 1.6;
       text-align: left;
     }
@@ -125,46 +115,42 @@
       margin-top: 0.75rem;
     }
 
-    /* Value cards also float, but slightly lighter for hierarchy */
+    /* Value cards also opaque now */
     .about-value-card {
       border-radius: 0.75rem;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.06);
+      background: #000; /* ✅ opaque */
       padding: 0.9rem 1rem;
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
     }
 
     .about-value-card h3 {
       margin: 0 0 0.4rem;
       font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.95);
+      color: #fff;
     }
 
     .about-value-card p {
       margin: 0;
       font-size: 0.86rem;
-      color: rgba(255, 255, 255, 0.82);
+      color: rgba(255, 255, 255, 0.92);
       line-height: 1.5;
     }
 
-    /* Optional: give a little separation from the background behind the page header text too */
+    /* ✅ Page header container opaque */
     .page-header .container {
-      background: rgba(10, 12, 16, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: #000; /* ✅ opaque */
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 0.9rem;
       padding: 1.25rem 1.25rem;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
       box-shadow: 0 12px 28px rgba(0,0,0,0.32);
     }
     .page-header .container h1,
     .page-header .container p {
-      color: rgba(255,255,255,0.92);
+      color: #fff;
     }
     .page-header .container p {
-      color: rgba(255,255,255,0.84);
+      color: rgba(255,255,255,0.92);
     }
   </style>
 </head>
