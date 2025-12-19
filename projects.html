@@ -312,6 +312,7 @@
         image: "images/sylvan-park/1.jpg",
         scope: "New Build in East Nashville",
         galleryPage: "project-sylvan-park-gallery.html"
+        forSaleUrl: "https://www.realtracs.com/listings/5990501/address/2803-jones-ave-nashville-tn-37207?listingStatusesCriteria=1:::;8:::;7:::&propertyClasses=Residential&mlsNumbers=2957976&auction=1&openHouse=0&primaryBedOnMain=0&sort=defaultAsc"
       },
       {
         name: "Franklin Farmhouse",
@@ -364,8 +365,9 @@
       <p class="project-popup-scope">${project.scope}</p>
 
       <div class="project-popup-actions">
-        <a class="project-btn" href="${project.galleryPage}">View Gallery →</a>
-      </div>
+  <a class="project-btn" href="${project.galleryPage}">View Gallery →</a>
+  ${project.forSaleUrl ? `<a class="project-btn" href="${project.forSaleUrl}" target="_blank" rel="noopener">For Sale →</a>` : ""}
+</div>
     </div>
   </div>
 `;
