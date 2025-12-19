@@ -1025,7 +1025,7 @@ main {
 }
 /* Add a black spacer between the two scroll sections */
 .scroll-hero + .scroll-hero {
-  border-top: 70px solid #000;  /* adjust height of black gap */
+  border-top: 210px solid #000;  /* adjust height of black gap */
 }
 
 
