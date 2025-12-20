@@ -1068,14 +1068,17 @@ main {
 
 /* =========================
    About page patterned background (below header)
+   Desktop + Mobile backgrounds
    ========================= */
+
+/* Default (desktop) */
 .page-bg{
   position: relative;
   width: 100%;
-  background-image: url("anchorbackground1.png");
-  background-repeat: no-repeat;
+  background-image: url("anchorbackground_desktop.png"); /* desktop image */
+  background-repeat: repeat;
   background-position: center top;
-  background-size: cover; /* adjust pattern scale if desired */
+  background-size: 1400px auto; /* adjust pattern scale on desktop */
 }
 
 /* Dark overlay so text remains readable on the pattern */
@@ -1093,3 +1096,15 @@ main {
   z-index: 1;
 }
 
+/* Mobile: swap to a cleaner / larger-scale pattern image */
+@media (max-width: 768px){
+  .page-bg{
+    background-image: url("anchorbackground_mobile.png"); /* mobile image */
+    background-size: 900px auto; /* larger = less busy on phones */
+    background-position: center top;
+  }
+
+  .page-bg::before{
+    background: rgba(0, 0, 0, 0.45);
+  }
+}
