@@ -1074,11 +1074,11 @@ main {
 /* Default (desktop) */
 .page-bg{
   position: relative;
-  width: 100%;
+  width: 125%;
   background-image: url("anchorbackground_desktop.png"); /* desktop image */
   background-repeat: repeat;
   background-position: center top;
-  background-size: 1800px auto; /* adjust pattern scale on desktop was 1400 */
+  background-size: 1400px auto; /* adjust pattern scale on desktop was 1400 */
 }
 
 /* Dark overlay so text remains readable on the pattern */
@@ -1100,7 +1100,7 @@ main {
 @media (max-width: 768px){
   .page-bg{
     background-image: url("anchorbackground_mobile.png"); /* mobile image */
-    background-size: 900px auto; /* larger = less busy on phones */
+    background-size: 600px auto; /* larger = less busy on phones */
     background-position: center top;
   }
 
